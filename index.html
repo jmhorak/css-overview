@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mah (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html xmlns="http://www.w3.org/1999/html">
+  <head>
+    <title>Getting Started with CSS</title>
+
+    <meta charset='utf-8'>
+    <script
+      src='http://html5slides.googlecode.com/svn/trunk/slides.js'></script>
+     <link href='http://fonts.googleapis.com/css?family=IM+Fell+English+SC' rel='stylesheet' type='text/css'>
+  </head>
+  
+  <style>
+    /* Your individual styles here, or just use inline styles if that's
+       what you want. */
+    ul.tree li {
+       margin-bottom: 0;
+    }
+
+    .noWrapping {
+       white-space: nowrap;
+    }
+
+    div.button {
+     padding: 3px 11px;
+     margin: 3px 5px;
+     background-image: -webkit-linear-gradient(top, whitesmoke, lightgray);
+     background-image:    -moz-linear-gradient(top, whitesmoke, lightgray);
+     background-image:     -ms-linear-gradient(top, whitesmoke, lightgray);
+     background-image:      -o-linear-gradient(top, whitesmoke, lightgray);
+     background-image:         linear-gradient(top, whitesmoke, lightgray);
+     border: 1px solid gray;
+     border-radius: 4px;
+     cursor: default;
+     box-shadow: 0 1px 1px #202020;
+     margin: 40px auto;
+     width: 125px;
+     text-align: center;
+    }
+
+    div.button:active {
+       background-image: -webkit-linear-gradient(top, lightgray, whitesmoke);
+       background-image:    -moz-linear-gradient(top, lightgray, whitesmoke);
+       background-image:     -ms-linear-gradient(top, lightgray, whitesmoke);
+       background-image:      -o-linear-gradient(top, lightgray, whitesmoke);
+       background-image:         linear-gradient(top, lightgray, whitesmoke);
+       box-shadow: inset 1px 1px 4px #202020;
+    }
+
+    div.button:hover {
+       color: orangered;
+    }
+
+    .fell-English {
+       font-family: 'IM Fell English SC', serif;
+    }
+
+    .text-demo-box {
+       height: 80px;
+       width: 120px;
+       background-color: yellow;
+       border: 3px solid orange;
+       font-size: 20px;
+    }
+
+    .animateBackground {
+       background-repeat: no-repeat;
+       background-size: 900px 1900px;
+       background-image: -webkit-linear-gradient(bottom, green, greenyellow 950px, yellow 1650px, white 1750px);
+       background-position: 0 -1200px;
+    }
+
+    .animateBackground:hover {
+       background-position: 0 -900px;
+    }
+
+    .segue {
+       background-image: -webkit-linear-gradient(bottom, lightgray, white 50%);
+       background-image:    -moz-linear-gradient(bottom, lightgray, white 50%);
+       background-image:     -ms-linear-gradient(bottom, lightgray, white 50%);
+       background-image:      -o-linear-gradient(bottom, lightgray, white 50%);
+       background-image:         linear-gradient(bottom, lightgray, white 50%);
+    }
+
+    .collapseMargin {
+       margin-top: 20px;
+       margin-bottom: 10px;
+       outline: 1px solid red;
+    }
+    
+  </style>
+
+  <body style='display: none'>
+
+    <section class='slides layout-regular'>
+      
+      <!-- Your slides (<article>s) go here. Delete or comment out the
+           slides below. -->
+
+      <!-- Title -->
+      <article class="segue">
+         <h1>
+            Getting Started with CSS
+         </h1>
+         <p>Jeff Horak<br>June xx, 2012</p>
+      </article>
+
+      <!-- Agenda -->
+      <article>
+         <h3>
+            Agenda
+         </h3>
+         <ul>
+            <li>Why Learn CSS</li>
+            <li>Browser Basics and Tooling</li>
+            <li>Selectors</li>
+            <li>Units of Measurement</li>
+            <li>Layouts</li>
+            <li>Colors, Shadows, and Gradients</li>
+            <li>Working with Text</li>
+            <li>The Story on Vendor Prefixes</li>
+            <li>SASS</li>
+            <li>CSS Performance</li>
+         </ul>
+      </article>
+
+      <!-- Why Learn CSS? -->
+      <article>
+         <h3>
+            Why Learn CSS
+         </h3>
+         <p>
+            <!-- TODO -->
+         </p>
+      </article>
+
+      <!-- Segue to Browser Basics -->
+      <article class="segue">
+         <h2>Browser Basics</h2>
+      </article>
+
+      <!-- How It Works -->
+      <article>
+         <h3>
+            How It Works
+         </h3>
+         <p>
+            After any page is loaded, browsers immediately start parsing HTML elements.
+         </p>
+         <ul>
+            <li>Scripts encountered are executed immediately</li>
+            <li>Mark-up is parsed and organized into the DOM Tree</li>
+            <li>CSS is parsed into buckets based on the selector</li>
+         </ul>
+      </article>
+
+      <!-- DOM and Render Trees -->
+      <article class='smaller'>
+         <h3>DOM and Render Trees</h3>
+         <p>
+            The DOM tree is the result of parsing the HTML that comes back from the network layer.
+         </p>
+         <p>
+            The DOM Tree is combined with the CSS to form the render tree. This is ultimately what is painted on-screen.
+         </p>
+         <p>
+            There is a 1:1 relationship between HTML elements and DOM elements. There is not a 1:1 relationship between DOM elements and render elements.
+         </p>
+         <div style='margin-top: 20px; display: inline-block; vertical-align: top'>
+            DOM tree
+            <ul class='tree'>
+               <li>
+                  html
+                  <ul>
+                     <li>
+                        head
+                        <ul>
+                           <li>title</li>
+                           <li>style</li>
+                        </ul>
+                     </li>
+                     <li>
+                        body
+                        <ul>
+                           <li>h1</li>
+                           <li>
+                              div
+                              <ul>
+                                 <li>span</li>
+                                 <li>img</li>
+                                 <li>a</li>
+                              </ul>
+                           </li>
+                           <li>
+                              div
+                              <ul>
+                                 <li>text block</li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
+         <div style="margin: 20px 90px; display: inline-block; vertical-align: top">
+            CSS
+            <code style="display: block; font-size: 20px;">span { display: none; }</code>
+         </div>
+         <div style="margin-top: 20px; display: inline-block; vertical-align: top">
+            Render tree
+            <ul class='tree'>
+               <li>
+                  viewport
+                  <ul>
+                     <li>
+                        scrolling area
+                        <ul>
+                           <li>h1 block</li>
+                           <li>
+                              div block
+                              <ul>
+                                 <li>img block</li>
+                                 <li>a text block</li>
+                              </ul>
+                           </li>
+                           <li>
+                              div block
+                              <ul>
+                                 <li>
+                                    text line
+                                    <ul>
+                                       <li>text block</li>
+                                    </ul>
+                                 </li>
+                                 <li>
+                                    text line
+                                    <ul>
+                                       <li>text block</li>
+                                    </ul>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
+      </article>
+
+      <!-- Painting Flow -->
+      <article>
+         <h3>Painting</h3>
+         <img style="height: 66px; width: 600px; margin: 30px auto; display: block;" src='img/flow.png'>
+         <q style="font-size: 1em; line-height: 45px; margin-left: 75px; margin-right: 75px; margin-top: 0;">
+            For better user experience, the rendering engine will try to display contents on the screen as soon as possible. It will not wait until all HTML is parsed before starting to build and layout the render tree. Parts of the content will be parsed and displayed, while the process continues with the rest of the contents that keeps coming from the network.
+         </q>
+         <div class="source">Source: <a href="http://www.html5rocks.com/en/tutorials/internals/howbrowserswork">How Browsers Work</a></div>
+      </article>
+
+      <!-- Rendering Engine Order -->
+      <article>
+         <h3>Painting</h3>
+         <p>
+            The rendering engine paints the render tree elements in order based on the stacking context.
+         </p>
+         <p>
+            The stacking context encapsulates z-index, element flow, and position within the mark-up.
+         </p>
+         <p>
+            The stacking order within a context for a block renderer is:
+         </p>
+         <ul>
+            <li>background color</li>
+            <li>background image</li>
+            <li>border</li>
+            <li>children</li>
+            <li>outline</li>
+         </ul>
+         <div class="source">Source: <a href="http://www.html5rocks.com/en/tutorials/internals/howbrowserswork">How Browsers Work</a>, <a href="http://www.w3.org/TR/CSS21/zindex.html">W3C - Stacking contexts</a></div>
+      </article>
+
+      <!-- Desktop Tools for Debugging CSS -->
+      <article>
+         <h3>Tools for Debugging CSS</h3>
+         <p>All desktop browsers have built in developer tools.</p>
+         <p>Debugging CSS issues is more effectively done within those developer tools.</p>
+         <p style='color: #c34daa;'>Individual CSS rules may be toggled</p>
+         <p>Rules and classes may also be added</p>
+         <p>Element states may be set to debug more interesting cases</p>
+         <div class="button">
+            Push Me
+         </div>
+      </article>
+
+      <!-- Firefox 3D Render View -->
+      <article class='fill'>
+         <h3>Firefox 3D render view</h3>
+         <img src="img/firefox3d.png">
+      </article>
+
+      <!-- Segue to Selectors -->
+      <article class="segue">
+         <h2>Selectors</h2>
+      </article>
+
+      <!-- Basic Selector Primitives -->
+      <article>
+         <h3>Basic Selector Primitives</h3>
+         <p>Shorthand language for matching CSS rules to DOM elements</p>
+         <p>Some basic examples:</p>
+         <table>
+            <thead>
+            <tr>
+               <th>
+                  Selector
+               </th>
+               <th>
+                  Category
+               </th>
+               <th>
+                  Matched elements
+               </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+               <td class="noWrapping"><code>.myClass</code></td>
+               <td>Class</td>
+               <td>Match element with class <code>myClass</code></td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>#myID</code></td>
+               <td>ID</td>
+               <td>Match element with ID <code>myID</code></td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>span</code></td>
+               <td>Tag</td>
+               <td>Match all <code>span</code>s</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>*</code></td>
+               <td>Universal</td>
+               <td>Match all elements</td>
+            </tr>
+            </tbody>
+         </table>
+         <p style="font-size: 0.7em">
+            Rules are divided into categories based on the right-most portion of the selector.<br>More
+            on this later.
+         </p>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/En/CSS/Class_selectors">Class selectors</a>,
+            <a href="https://developer.mozilla.org/En/CSS/ID_selectors">ID selectors</a>,
+            <a href="https://developer.mozilla.org/en/CSS/Type_selectors">Type selectors</a>,
+            <a href="https://developer.mozilla.org/en/CSS/Universal_selectors">Universal selector</a>
+         </div>
+      </article>
+
+      <!-- Combining Primitives -->
+      <article>
+         <h3>Combining Primitives</h3>
+         <table>
+            <thead>
+            <tr>
+               <th>Selector</th>
+               <th>Matched elements</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+               <td class="noWrapping"><code>div.myClass</code></td>
+               <td>All <code>div</code>s with the class <code>myClass</code></td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>div.myClass,<br>a#myID,<br>span</code></td>
+               <td>All <code>div</code>s with the class <code>myClass</code> AND<br>the <code>a</code> with ID <code>myID</code> AND<br>all <code>span</code>s</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>div .myClass</code></td>
+               <td>Any element with class <code>myClass</code> which has an ancestor that is a <code>div</code></td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>div > .myClass</code></td>
+               <td>Any element with class <code>myClass</code> whose parent is a <code>div</code></td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>div + .myClass</code></td>
+               <td>Any element with class <code>myClass</code> that is immediately preceded by a <code>div</code></td>
+            </tr>
+            </tbody>
+         </table>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/Child_selectors">Child selectors</a>,
+            <a href="https://developer.mozilla.org/en/CSS/Descendant_selectors">Descendant selectors</a>
+         </div>
+      </article>
+
+      <!-- Attribute Selectors -->
+      <article>
+         <h3>Attribute Selectors</h3>
+         <table>
+            <thead>
+            <tr>
+               <th>Selector</th>
+               <th>Matched elements</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+               <td class="noWrapping"><code>input[checked]</code></td>
+               <td>All checked <code>input</code>s</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>input[type='text']</code></td>
+               <td>All line edits</td>
+            </tr>
+            </tbody>
+         </table>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/Attribute_selectors">Attribute Selectors</a>
+         </div>
+      </article>
+
+      <!-- Pseudo Classes -->
+      <article>
+         <h3>Pseudo Classes</h3>
+         <p>CSS allows matching to special states of elements.</p>
+         <table>
+            <thead>
+            <tr>
+               <th>Selector</th>
+               <th>Matched elements</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+               <td class="noWrapping"><code>a:link</code></td>
+               <td>All unvisited links</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>a:visited</code></td>
+               <td>All visited links</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>a:active</code></td>
+               <td>Matches a link that is being clicked on</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>*:focus</code></td>
+               <td>Matches the elements with the current focus</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>.myClass:hover</code></td>
+               <td>Matches when hovering over an element with class <code>myClass</code></td>
+            </tr>
+            </tbody>
+         </table>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/Pseudo-classes">Pseudo-Classes</a>
+         </div>
+      </article>
+
+      <!-- More Pseudo Classes -->
+      <article class="smaller">
+         <h3>More Pseudo Classes</h3>
+         <p>These selectors match elements very specific placement within the DOM</p>
+         <table>
+            <thead>
+            <tr>
+               <th>Selector</th>
+               <th>Matched elements</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+               <td class="noWrapping"><code>li:first-child</code></td>
+               <td>Matches the first list item under the parent</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>div:nth-child(<em>a</em>n + <em>b</em>)</code></td>
+               <td>Matches <code>div</code>s that are <em>b</em>th child of the parent after all its children have been split into groups of <em>a</em> elements each.</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>span:nth-of-type(<em>a</em>n + <em>b</em>)</code></td>
+               <td>Similar to nth-child except the groups only contain <code>span</code>s</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>.myClass:empty</code></td>
+               <td>Matches elements with class <code>myClass</code> without any children<br><strong>Note:</strong> text (including whitespace) are considered children</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>input:enabled</code></td>
+               <td>Matches all enabled <code>input</code> fields</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>input:disabled</code></td>
+               <td>Matches all disabled <code>input</code> fields</td>
+            </tr>
+            <tr>
+               <td class="noWrapping"><code>span:not(.myClass)</code></td>
+               <td>Matches all <code>span</code>s without class <code>myClass</code></td>
+            </tr>
+            </tbody>
+         </table>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/Pseudo-classes">Pseudo-Classes</a>,
+            <a href="https://developer.mozilla.org/en/CSS/%3Anth-child">:nth-child</a>,
+            <a href="https://developer.mozilla.org/en/CSS/%3Anth-of-type">:nth-of-type</a>,
+            <a href="https://developer.mozilla.org/en/CSS/%3Aempty">:empty</a>,
+            <a href="https://developer.mozilla.org/en/CSS/%3Anot">:not</a>
+         </div>
+      </article>
+
+      <!-- Conflicting Styles -->
+      <article>
+         <h3>How Are Conflicting Styles Resolved?</h3>
+         <p>The rendering engine may have multiple styles it needs to apply to a particular element.</p>
+         <pre>div { background-color: #00FF00; }
+div { background-color: #202020; }</pre>
+         <div style="height: 100px; width: 600px; margin: 40px auto; position: relative">
+            <div style="width: 300px; height: 100%; background-color: green; display: inline-block;">
+            </div><div style="width: 300px; height: 100%; background-color: gray; display: inline-block;"></div>
+            <div style="position: absolute; left: 50%; top: 50%; margin-left: -267px; margin-top: -18px; color: black;">
+               Should the background be <span style="color: #adff2f;">green</span> or <span style="color: lightgray;">gray</span>?
+            </div>
+         </div>
+      </article>
+
+      <!-- Resolution Characteristics -->
+      <article>
+         <h3>Resolution Characteristics</h3>
+         <p>
+            Resolving conflicts requires looking at several pieces of information
+         </p>
+         <ul>
+            <li>Rule origin - Where did the rule originate?</li>
+            <li>Specificity - How specific is the rule?</li>
+            <li>Importance - Was the rule declared as <code>!important</code>?</li>
+            <li>Order - What order were the rules loaded?</li>
+         </ul>
+         <div class="source">
+            Further Reading: <a href="http://reference.sitepoint.com/css/cascade">The Cascade</a>
+         </div>
+      </article>
+
+      <!-- Resolution Steps -->
+      <article>
+         <h3>Resolution Steps</h3>
+         <p>
+            Resolving CSS properties is done in four steps
+         </p>
+         <ol>
+            <li>For a given property, find all declarations that apply to a specific element.</li>
+            <li>Sort the declarations according to their levels of importance, and origins.</li>
+            <li>Sort declarations with the same level of importance and origin by selector specificity.</li>
+            <li>Finally, if declarations have the same level of importance, origin, and specificity, sort them by the order in which they’re specified; the last declaration wins.</li>
+         </ol>
+         <div class="source">
+            Source: <a href="http://reference.sitepoint.com/css/cascade">The Cascade</a>
+         </div>
+      </article>
+
+      <!-- Rule Origin -->
+      <article>
+         <h3>Rule Origin</h3>
+         <p>
+            The origin of a CSS rule refers to the type of stylesheet where it appeared.
+         </p>
+         <p>
+            Rules are imported from three sources
+         </p>
+         <table>
+            <tr>
+               <td>
+                  User Agent
+               </td>
+               <td>
+                  The default stylesheet for the device rendering the output. This is usually a web browser but may be a phone, TV, or <a href="http://media.photobucket.com/image/webos%20toaster/g_manq/webOSToaster.jpg">household appliance</a>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  User Stylesheet
+               </td>
+               <td>
+                  Most desktop browsers allow users to provide their own <a href="https://twitter.com/paul_irish/status/217303604254613504">custom defaults</a> in the user stylesheet.
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  Author Stylesheet
+               </td>
+               <td>
+                  Any rule imported via a <code>link</code> or <code>style</code> element or in an element's <code>style</code> attribute.
+               </td>
+            </tr>
+         </table>
+      </article>
+
+      <!-- How Origin is Applied -->
+      <article>
+         <h3>How Origin is Applied</h3>
+         <p>
+            CSS rule declarations are sorted by origin in the following order from lowest to highest
+         </p>
+         <ol>
+            <li>User agent declarations</li>
+            <li>Normal declarations in user style sheets</li>
+            <li>Normal declarations in author style sheets</li>
+            <li>Important declarations in author style sheets</li>
+            <li>Important declarations in user style sheets</li>
+         </ol>
+         <div class="source">
+            Further Reading: <a href="http://reference.sitepoint.com/css/cascade">The Cascade</a>
+         </div>
+      </article>
+
+      <!-- Specificity -->
+      <article>
+         <h3>Specificity</h3>
+         <p>
+            More specific rules are applied over less specific ones. But how is specificity calculated?
+         </p>
+         <p>
+            Rules are split into 4 categories, a, b, c, d.
+         </p>
+         <ul>
+            <li><strong>a</strong> = 1 if the declaration is inline rather than on a selector, else <strong>a</strong> = 0</li>
+            <li><strong>b</strong> = the count of the number of ID attributes</li>
+            <li><strong>c</strong> = the count of other attributes (like class names) and pseudo-classes</li>
+            <li><strong>d</strong> = the count of element names and pseudo-elements</li>
+         </ul>
+         <p>
+            Concatenating the four counts (in a hex base) gives the specificity
+         </p>
+         <div class="source">
+            Source: <a href="http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/#Specificity">Specificity</a>
+         </div>
+      </article>
+
+      <!-- Segue to Units of Measurement -->
+      <article class="segue">
+         <h2>Units of Measurement</h2>
+      </article>
+
+      <!-- Introducing Font-Relative Lengths -->
+      <article>
+         <h3>Font-Relative Lengths</h3>
+         <q style="font-size: 1em; line-height: 45px; margin-left: 75px; margin-right: 75px; margin-top: 40px; text-align: justify;">
+            Aside from <code>rem</code> (which refers to the font-size of the root element), the font-relative
+            lengths refer to the computed font metrics of the element on which they are used. The
+            exception is when they occur in the value of the <code>font-size</code> property itself, in which
+            case they refer to the font metrics of the parent element (or the font metrics
+            corresponding to the initial values of the <code>font</code> property, if the element has no parent).
+         </q>
+         <div class="source">
+            Source: <a href="http://www.w3.org/TR/css3-values/#font-relative-lengths">Font-Relative Lengths</a>
+         </div>
+      </article>
+
+      <!-- Font-Relative Length Details -->
+      <article class="smaller">
+         <h3>Font Relative Lengths</h3>
+         <table>
+            <tr>
+               <td>
+                  <code>1.0em</code>
+               </td>
+               <td>
+                  Equal to the computed value of the <code>font-size</code>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <code>1.0ex</code>
+               </td>
+               <td>
+                  Equal to the height of the lowercase "x"
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <code>1.0ch</code>
+               </td>
+               <td>
+                  Equal to the height of 0
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <code>1.0rem</code>
+               </td>
+               <td>
+                  Equal to the computed value of the <code>font-size</code> of the root element
+               </td>
+            </tr>
+         </table>
+
+         <pre>h1 { line-height: 1.2em; }</pre>
+         <p>
+            The line height of <code>h1</code> elements will be 20% greater than the font size of the <code>h1</code> element
+         </p>
+
+         <pre>h1 { font-size: 1.2em; }</pre>
+         <p>
+            The font-size of <code>h1</code> elements will be 20% greater than the inherited font size
+         </p>
+         <div class="source">
+            Source: <a href="http://www.w3.org/TR/css3-values/#font-relative-lengths">Font Relative Lengths</a>
+         </div>
+      </article>
+
+      <!-- Absolute Lengths -->
+      <article class="smaller">
+         <h3>Absolute Lengths</h3>
+         <q style="font-size: 1em; line-height: 45px; margin-left: 75px; margin-right: 75px; margin-top: 40px; text-align: justify;">
+            Absolute length units are fixed in relation to each other and anchored to some physical measurement.
+         </q>
+         <p>
+            Some common units of measurement:
+         </p>
+         <table>
+            <tr>
+               <td><code>cm</code></td>
+               <td>centimeters</td>
+            </tr>
+            <tr>
+               <td><code>in</code></td>
+               <td>inches - defined as 2.54cm</td>
+            </tr>
+            <tr>
+               <td><code>px</code></td>
+               <td>pixel - defined as 1/96th of an inch or the size of the device's reference pixel</td>
+            </tr>
+            <tr>
+               <td><code>pt</code></td>
+               <td>points - defined as 1/72nd of an inch</td>
+            </tr>
+         </table>
+         <p>
+            In practice, the best unit of measurement depends on the media.
+         </p>
+         <p>
+            Pixels make sense on screen. Centimeters and inches make sense in printed media.
+         </p>
+
+         <div class="source">
+            Source: <a href="http://www.w3.org/TR/css3-values/#absolute-lengths">Absolute Lengths</a>
+         </div>
+      </article>
+
+      <!-- Percentages -->
+      <article>
+         <h3>Percentages</h3>
+         <p>
+            Percentage values are always relative to some other value. Properties that allow
+            percentages implicitly define the value to which the percentage refers.
+         </p>
+         <div class="source">
+            Source: <a href="http://www.w3.org/TR/css3-values/#percentages">Percentages</a>
+         </div>
+      </article>
+
+      <!-- Viewport Relative Lengths -->
+      <article>
+         <h3>Viewport-Relative Units</h3>
+         <p>
+            CSS3 introduces viewport-relative units. These are supported in Chrome and IE.
+         </p>
+         <p>
+            Percentages are relative to a value on an ancestor element. Viewport-relative units
+            are always in relation to the viewport size.
+         </p>
+         <table>
+            <tr>
+               <td>
+                  vh
+               </td>
+               <td>
+                  1% of the viewport height
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  vw
+               </td>
+               <td>
+                  1% of the viewport width
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  vm
+               </td>
+               <td>
+                  The smaller of vh and vw
+               </td>
+            </tr>
+         </table>
+         <div class="source">
+            Further Reading: <a href="http://css-tricks.com/viewport-sized-typography/">Viewport-Sized Typography</a>
+         </div>
+      </article>
+
+      <!-- Segue to Layout -->
+      <article class="segue">
+         <h2>Layout</h2>
+      </article>
+
+      <article>
+         <h3>My God, It's Full of Boxes</h3>
+         <p>
+            The CSS visual formatting model defines how boxes are generated from elements in the render tree.
+         </p>
+         <p>
+            The generated boxes are put in the layout by the CSS engine using one of three positioning schemes.
+         </p>
+         <p>
+            These boxes use the CSS box model to define their size.
+         </p>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/CSS/Visual_formatting_model">Visual Formatting Model</a>
+         </div>
+      </article>
+
+      <!-- Box Model -->
+      <article class="smaller">
+         <h3>Box Model</h3>
+         <p>
+            CSS Box Model describes the space taken by an element.
+         </p>
+         <div style="width: 570px; height: 320px; margin: 10px auto; border: 3px dashed orange; position: relative;">
+            Margin
+            <div style="background-color: lightblue; width: 480px; height: 230px; position: absolute;
+                        top: 50%; left: 50%; margin-top: -115px; margin-left: -240px;">
+               Border
+               <div style="background-color: #adff2f; width: 390px; height: 140px; position: absolute;
+                           top: 50%; left: 50%; margin-top: -70px; margin-left: -200px;">
+                  Padding
+                  <div style="background-color: rgba(90, 149, 0, 0.2); width: 300px; height: 50px; line-height: 50px;
+                              text-align: center; position: absolute; top: 50%; left: 50%; margin-left: -150px; margin-top: -25px;">
+                     Content Area
+                  </div>
+               </div>
+            </div>
+         </div>
+         <pre style="margin-top: 10px">
+div {
+  height: 50px;
+  width: 300px;
+  background-color: #ADFF2F;
+  padding: 45px;
+  border: 45px solid #ADD8E6;
+  margin: 45px;
+}</pre>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/box_model">Box Model</a>
+         </div>
+      </article>
+
+      <!-- Block boxes -->
+      <article>
+         <h3>Block Boxes</h3>
+         <p>
+            Block boxes or block-level elements are created when the <code>display</code> property is
+            <code>block</code>, <code>list-item</code>, or <code>table</code>.
+         </p>
+         <p>
+            Block-level elements are displayed vertically stacked starting at the top.
+         </p>
+         <div style="margin-top: 20px; background-color: yellow; border: 3px solid orangered;">
+            Block 1
+         </div>
+         <div style="background-color: lightblue; border: 3px solid gray;">
+            Block 2
+         </div>
+         <div style="background-color: #90ee90; border: 3px solid green;">
+            Block 3
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/En/HTML/Block-level_elements">Block-Level Elements</a>
+         </div>
+      </article>
+
+      <!-- Block Attributes -->
+      <article>
+         <h3>Block Attributes</h3>
+         <p>
+            Some interesting properties of block-level elements
+         </p>
+         <ul>
+            <li>Blocks start on a newline</li>
+            <li>Blocks expand to use all available horizontal space</li>
+            <li>Blocks expand vertically to fully contain in-flow child elements as part of their footprint.</li>
+            <li>Blocks create a new block-formatting context (more on this later)</li> <!-- TODO link -->
+            <li>The top and bottom margins between block elements collapse</li>
+         </ul>
+      </article>
+
+      <article>
+         <h3>Collapsing Margins</h3>
+         <p>
+            The top and bottom margin between sibling block elements are combined into a single margin. The resulting
+            margin is the larger of the two being combined.
+         </p>
+         <pre>p { margin-top: 20px; margin-bottom: 10px; outline: 1px solid red; }</pre>
+         <p class="collapseMargin">This is a paragraph</p>
+         <p class="collapseMargin">This is a paragraph</p>
+         <p class="collapseMargin">This is a paragraph</p>
+         <p>
+            The margin between these elements is 20px.
+         </p>
+         <p>
+            Margins collapse with adjacent siblings, a parent and the first/last child, and in empty blocks.
+         </p>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/margin_collapsing">Margin Collapsing</a>
+         </div>
+      </article>
+
+      <!-- Inline Boxes -->
+      <article>
+         <h3>Inline Boxes</h3>
+         <p>
+            Block boxes or block-level elements are created when the <code>display</code> property is
+            <code>inline</code>, <code>inline-block</code>, or <code>inline-table</code>.
+         </p>
+         <p>
+            Normal flow inline boxes are arranged horizontally within the layout of the surrounding elements.
+         </p>
+         <div style="margin-top: 20px;">
+            Text before
+            <span style="background-color: yellow; border: 3px solid orangered;">Inline 1</span>
+            <span style="background-color: lightblue; border: 3px solid gray;">Inline 2</span>
+            <span style="background-color: #90ee90; border: 3px solid green;">Inline 3</span>
+            more text after.
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/Visual_formatting_model">Visual Formatting Model</a>
+         </div>
+      </article>
+
+      <!-- Flow -->
+      <article>
+         <h3>Flow</h3>
+         <p>
+            Elements on the page are rendered as either:
+         </p>
+         <ul>
+            <li>In-Flow (Normal Flow)</li>
+            <li>Out-of-Flow (Positioned)</li>
+            <li>Floated</li>
+         </ul>
+         <p>
+            The flow of an element is a combination of the <code>display</code>, <code>position</code>,
+            and <code>float</code> properties.
+         </p>
+      </article>
+
+      <!-- In-Flow -->
+      <article>
+         <h3>In-Flow</h3>
+         <p>
+            Normal flow <code>block</code> elements are positioned vertically one after the other
+            starting in the upper left.
+         </p>
+         <div style="margin-top: 20px; background-color: yellow; border: 3px solid orangered;">
+            Block 1
+         </div>
+         <div style="background-color: lightblue; border: 3px solid gray;">
+            Block 2
+         </div>
+         <div style="background-color: #90ee90; border: 3px solid green;">
+            Block 3
+         </div>
+         <p>
+            Normal flow <code>inline</code> elements are positioned horizontally one after another.
+         </p>
+         <div style="margin-top: 20px;">
+            Text before
+            <span style="background-color: yellow; border: 3px solid orangered;">Inline 1</span>
+            <span style="background-color: lightblue; border: 3px solid gray;">Inline 2</span>
+            <span style="background-color: #90ee90; border: 3px solid green;">Inline 3</span>
+            more text after.
+         </div>
+         <p>
+            Normal flow elements do not overlap.
+         </p>
+      </article>
+
+      <!-- Segue to Colors, Shadows, and Gradients -->
+      <article style="background-image: -webkit-linear-gradient(top, greenyellow, green);">
+         <h2 style="text-shadow: 3px 1px 4px #202020;">Colors, Shadows, Gradients</h2>
+      </article>
+
+      <!-- Colors -->
+      <article>
+         <h3>Colors</h3>
+         <p>
+            Three primary ways to specify color in CSS:
+         </p>
+         <ul>
+            <li>Named Color</li>
+            <li>RGB</li>
+            <li>HSL</li>
+         </ul>
+         <p style="background-color: #778899; color: white; padding: 5px;">
+            These are all representations of the same color
+         </p>
+         <pre>h1 { color: lightslategray; }
+h2 { color: #778899; }
+h3 { color: #789; }
+h4 { color: rgb(119, 136, 153); }
+h5 { color: hsl(140, 34, 128); }</pre>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/color_value">Colors</a>,
+            <a href="http://mothereffinghsl.com/">Mother-effing HSL</a>
+         </div>
+      </article>
+
+      <!-- Transparency -->
+      <article>
+         <h3>Transparency</h3>
+         <p>
+            RGB and HSL colors may include transparency through an alpha channel. This is specified
+            using the <code>rgba</code> and <code>hsla</code> functions
+         </p>
+         <p>
+            Alpha values range from 0 to 1. The higher the value the more opaque.
+         </p>
+         <p>
+            The <code>transparent</code> named color is fully transparent.
+         </p>
+
+         <div style="margin-top: 20px;">
+            <div style="background-color: rgba(0, 0, 255, 1);">background-color: rgba(0, 0, 255, 1); <span style="float: right;">/* full opaque */</span></div>
+            <div style="background-color: rgba(0, 0, 255, .5);">background-color: rgba(0, 0, 255, .5);<span style="float: right;">/* 50% opaque */</span></div>
+            <div style="background-color: rgba(0, 0, 255, .1);">background-color: rgba(0, 0, 255, .1); <span style="float: right;">/* 10% opaque */</span></div>
+            <div style="background-color: transparent;">background-color: transparent; <span style="float: right;">/* Fully transparent */</span></div>
+         </div>
+
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/color_value">Colors</a>,
+         </div>
+      </article>
+
+      <!-- Text Shadows -->
+      <article>
+         <h3>Text Shadows</h3>
+         <p>
+            Text shadows can be added to any text.
+         </p>
+         <pre style="margin-bottom: 20px;">&lt;!-- format is &lt;offset-x&gt; &lt;offset-y&gt; &lt;blur-radius&gt; &lt;color&gt; --&gt;
+&lt;p style="text-shadow: -1px -1px 4px #202020"&gt;Text Shadow!&lt;/p&gt;</pre>
+         <p style="text-shadow: -1px -1px 4px #202020; margin-top: 0; margin-bottom: 40px;">
+            Text Shadow!
+         </p>
+         <p>
+            Multiple shadows may be added to a single element by separating the declarations with a comma.
+         </p>
+         <pre style="margin-bottom: 20px;">&lt;p style="text-shadow: -1px -1px 4px #202020,
+                        15px 1em 0 red;"&gt;SHADOW ALL THE THINGS&lt;/p&gt;</pre>
+         <p style="text-shadow: -1px -1px 4px #202020, 15px 1em 0 red;">
+            SHADOW ALL THE THINGS!
+         </p>
+         <div class="source">
+            Further Reading: <a href="http://mothereffingtextshadow.com/">Mother Effing Text-Shadow</a>
+         </div>
+      </article>
+
+      <!-- Box Shadows -->
+      <article>
+         <h3>Box Shadows</h3>
+         <p>
+            Shadows can also be applied to box elements in a very similar way.
+         </p>
+         <div>
+            <div style="float: right;
+                        height: 50px;
+                        width: 60px;
+                        border-radius: 4px;
+                        box-shadow: 5px 5px 3px 2px #202020;
+                        border: 5px solid orange;
+                        background-color: red;
+                        margin: 121px 80px;">
+            </div>
+            <pre>/**
+ *  &lt;offset-x&gt;
+ *  &lt;offset-y&gt;
+ *  &lt;blur-radius&gt;
+ *  &lt;spread-radius&gt;
+ *  &lt;color&gt;
+ **/
+.my-shadow-class {
+  box-shadow: 5px 5px 3px 2px #202020;
+}</pre>
+         </div>
+         <div>
+            <div style="float: left;
+                        height: 50px;
+                        width: 60px;
+                        border-radius: 4px;
+                        box-shadow: inset 3px 3px 10px 2px #202020;
+                        border: 5px solid orange;
+                        background-color: red;
+                        margin: 23px 80px;">
+            </div>
+            <pre>.my-inset-shadow-class {
+  box-shadow: inset 3px 3px 10px 2px #202020;
+}</pre>
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/box-shadow">Box Shadows</a>
+         </div>
+      </article>
+
+      <!-- Linear Gradients -->
+      <article>
+         <h3>Linear Gradients</h3>
+         <p>
+            The CSS linear gradient function creates an image on the fly displaying the gradient
+            between the supplied colors.
+         </p>
+         <p>
+            Gradients may have multiple color-stops. Color stops are points at which the gradient
+            reaches a specific color.
+         </p>
+         <pre>.myAwesomeGradient {
+  linear-gradient(45deg, red, orange 50%, green, blue 80%, purple);
+}</pre>
+         <div style="height: 200px;
+                     width: auto;
+                     background-image: -webkit-linear-gradient(45deg, red, orange 50%, green, blue 80%, purple);
+                     background-image:    -moz-linear-gradient(45deg, red, orange 50%, green, blue 80%, purple);
+                     background-image:     -ms-linear-gradient(45deg, red, orange 50%, green, blue 80%, purple);
+                     background-image:      -o-linear-gradient(45deg, red, orange 50%, green, blue 80%, purple);
+                     background-image:         linear-gradient(45deg, red, orange 50%, green, blue 80%, purple);">
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/linear-gradient">Linear Gradients</a>
+         </div>
+      </article>
+
+      <!-- Radial Gradients -->
+      <article>
+         <h3>Radial Gradients</h3>
+         <p>
+            The radial gradient function creates an image on the fly displaying a gradient of colors
+            radiating away from an origin.
+         </p>
+         <p>
+            Radial gradients may appear as circles or ellipses.
+         </p>
+         <pre>.myOtherAwesomeGradient {
+ radial-gradient(circle, red, orange 50%, green, blue 80%, purple);
+}</pre>
+         <div style="height: 200px;
+                     width: auto;
+                     background-image: -webkit-radial-gradient(circle, red, orange 50%, green, blue 80%, purple);
+                     background-image:    -moz-radial-gradient(circle, red, orange 50%, green, blue 80%, purple);
+                     background-image:     -ms-radial-gradient(circle, red, orange 50%, green, blue 80%, purple);
+                     background-image:      -o-radial-gradient(circle, red, orange 50%, green, blue 80%, purple);
+                     background-image:         radial-gradient(center, 0deg, circle, cover, red, orange 50%, green, blue 80%, purple);">
+
+         </div>
+      </article>
+
+      <!-- Repeating Gradients -->
+      <article>
+         <h3>Repeating Gradients</h3>
+         <p>
+            Linear and radial gradients can be set as repeating. The color stops of the gradient are
+            repeated at multiples of the distance between the first and last color stop.
+         </p>
+         <div style="height: 200px;
+                     width: auto;
+                     margin-top: 20px;
+                     background-image: -webkit-repeating-radial-gradient(left, red 0%, orange 15px, yellow 100px);
+                     background-image:    -moz-repeating-radial-gradient(left, red 0%, orange 15px, yellow 100px);
+                     background-image:     -ms-repeating-radial-gradient(left, red 0%, orange 15px, yellow 100px);
+                     background-image:      -o-repeating-radial-gradient(left, red 0%, orange 15px, yellow 100px);
+                     background-image:         repeating-radial-gradient(left, red 0%, orange 15px, yellow 100px);">
+
+                     </div>
+         <div style="height: 200px;
+                     width: auto;
+                     margin-top: 20px;
+                     background-image: -webkit-repeating-linear-gradient(45deg, red 0%, orange 25px, green, blue 100px, purple 120px );
+                     background-image:    -moz-repeating-linear-gradient(45deg, red 0%, orange 25px, green, blue 100px, purple 120px );
+                     background-image:     -ms-repeating-linear-gradient(45deg, red 0%, orange 25px, green, blue 100px, purple 120px );
+                     background-image:      -o-repeating-linear-gradient(45deg, red 0%, orange 25px, green, blue 100px, purple 120px );
+                     background-image:         repeating-linear-gradient(45deg, red 0%, orange 25px, green, blue 100px, purple 120px );">
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/repeating-radial-gradient">repeating-radial-gradient</a>,
+            <a href="https://developer.mozilla.org/en/CSS/repeating-linear-gradient">repeating-linear-gradient</a>
+         </div>
+      </article>
+
+      <!-- Using Gradients -->
+      <article>
+         <h3>Last Word on Gradients</h3>
+         <p>
+            Browser support for gradients currently requires <strong>vendor-prefixing</strong> (which I'll cover later).
+         </p>
+         <p>
+            Advanced techniques such as radial gradients and repeating gradients do not enjoy the same
+            level of support on all browsers.
+         </p>
+         <p>
+            Provide a sensible fall-back if gradients are not supported on the current platform.
+         </p>
+      </article>
+
+      <!-- Segue to Working with Text -->
+      <article class="segue">
+         <h2 class="fell-English">Working with Text</h2>
+      </article>
+
+      <!-- Introduction to Typography -->
+      <article class="smaller">
+         <h3>Basic Introduction to Typography</h3>
+         <p>
+            Browsers define 5 basic generic font-families.
+         </p>
+         <table>
+            <tr>
+               <td style="font-family: serif;">
+                  Serif
+               </td>
+               <td>
+                  Glyphs have finishing strokes, flared or tapering ends, or have actual serifed endings.
+               </td>
+            </tr>
+            <tr>
+               <td style="font-family: sans-serif;">
+                  Sans-Serif
+               </td>
+               <td>
+                  Glyphs have stroke endings that are plain.
+               </td>
+            </tr>
+            <tr>
+               <td style="font-family: cursive;">
+                  Cursive
+               </td>
+               <td>
+                  Glyphs in cursive fonts generally have either joining strokes or other cursive
+                  characteristics beyond those of italic typefaces. The glyphs are partially or
+                  completely connected, and the result looks more like handwritten pen or brush
+                  writing than printed letterwork.
+               </td>
+            </tr>
+            <tr>
+               <td style="font-family: fantasy;">
+                  Fantasy
+               </td>
+               <td>
+                  Fantasy fonts are primarily decorative fonts that contain playful representations of characters.
+               </td>
+            </tr>
+            <tr>
+               <td style="font-family: monospace;">
+                  Monospace
+               </td>
+               <td>
+                  All glyphs have the same fixed width.
+               </td>
+            </tr>
+         </table>
+         <p>
+            The actual default font used for each font-family is defined by the user agent.
+         </p>
+         <p>
+            One of these families should always be included in any <code>font</code> rule.
+         </p>
+         <pre>a { font: 0.8em 'Segoe UI', Arial, sans-serif; }</pre>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/CSS/font-family">font-family</a>
+         </div>
+      </article>
+
+      <!-- Specifying a Font -->
+      <article class="smaller">
+         <h3>Specifying a Font</h3>
+         <pre>.example1 { font: 20px Verdana, sans-serif; } </pre>
+         <p style="font: 20px Verdana, sans-serif;">
+            Example 1: Verdana at 20px
+         </p>
+         <pre>.example2 { font: 20px 'Not Available Font', sans-serif; }</pre>
+         <p style="font: 20px 'Not Available Font', sans-serif;">
+            Example 2: Fallback sans-serif at 20px
+         </p>
+         <pre>.example3 { font: 0.8em/1.2em 'Segoe UI', Arial, sans-serif; }</pre>
+         <p style="font: 0.7em/1.2em 'Segoe UI', Arial, sans-serif;">
+            Example 3: Segoe UI at 70% of the inherited size with 120% larger <code>line-height</code>
+         </p>
+         <pre>.example4 { font: italic small-caps bold 0.8em/1.2em cursive; }</pre>
+         <p style="font: italic small-caps bold 0.8em/1.2em cursive;">
+            Example 4: Fallback cursive font in small-cap bold italic
+         </p>
+      </article>
+
+      <!-- Web Fonts -->
+      <article class="smaller">
+         <h3>Web Fonts</h3>
+         <p>
+            The days of sticking with "web safe" fonts are gone. Web fonts allow interesting typography
+            without requiring images of text.
+         </p>
+         <p>
+            The "Fontspring @Font-Face Syntax" is currently the best way to include a web font to ensure
+            it works on all platforms.
+         </p>
+         <pre>@font-face {
+   font-family: 'MyFontFamily';
+   src: url('myfont-webfont.eot?#iefix') format('embedded-opentype'),
+   url('myfont-webfont.woff') format('woff'),
+   url('myfont-webfont.ttf')  format('truetype'),
+   url('myfont-webfont.svg#svgFontName') format('svg');
+}</pre>
+         <p>
+            Works in Safari 5, IE 6-9, FireFox 3.6+, Chrome 8+, iOS 3.2+, Android 2.2+, and Opera 11+
+         </p>
+         <div class="source">
+            Source: <a href="http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax">The New Bulletproof @Font-Face Syntax</a>
+         </div>
+      </article>
+
+      <!-- Text Wrapping -->
+      <article>
+         <h3>Wrapping</h3>
+         <p>
+            CSS provides mechanisms to control wrapping of text.
+         </p>
+         <div style="margin-top: 20px;">
+            <div>Out of the box text behavior (pun intended)</div>
+            <div style="display: inline-block; vertical-align: top;" class="text-demo-box">
+               This Example Has Regular Line Breaks
+            </div>
+            <div style="display: inline-block; vertical-align: top; position: relative; left: 25%;" class="text-demo-box">
+               AReallyLongUnbrokenStringOfCharacters
+            </div>
+         </div>
+         <div style="margin-top: 20px;">
+            <div>No wrap: <code>{ white-space: nowrap; }</code></div>
+            <div style="display: inline-block; white-space: nowrap; " class="text-demo-box">
+               This Example Has Regular Line Breaks
+            </div>
+            <div style="display: inline-block; position: relative; left: 25%;" class="text-demo-box">
+               AReallyLongUnbrokenStringOfCharacters
+            </div>
+         </div>
+         <div style="margin-top: 20px;">
+            <div>Force wrapping: <code>{ word-wrap: break-word; }</code></div>
+            <div style="display: inline-block;" class="text-demo-box">
+               This Example Has Regular Line Breaks
+            </div>
+            <div style="display: inline-block; word-wrap: break-word; position: relative; left: 25%;" class="text-demo-box">
+               AReallyLongUnbrokenStringOfCharacters
+            </div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/white-space">white-space</a>,
+            <a href="https://developer.mozilla.org/en/CSS/word-wrap">word-wrap</a>
+         </div>
+      </article>
+
+      <!--<article class="animateBackground" style="-webkit-transition-property: background-position;
+             -webkit-transition-duration: 250ms;">
+         <h2>Hover over this</h2>
+      </article> -->
+
+      <!-- Elided Text -->
+      <article class="smaller">
+         <h3>Elided Text</h3>
+         <p>
+            Text can be truncated automatically with an ellipsis in CSS using
+         </p>
+         <p>
+            <code>{ text-overflow: ellipsis; }</code>
+         </p>
+         <p>
+            However, there are 3 prerequisites that must be set for it to work.
+         </p>
+         <ul>
+            <li>
+               <div style="height: 60px;">
+                  <div>
+                     The size of the containing element must be calculatable.
+                  </div>
+                  <div title="This is some really long text inside of a floated div. The width is not calculatable so it will not properly elide."
+                          style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 28px;
+                              float: left; background-color: yellow; border: 1px solid orange; margin-top: 10px;">
+                     This is some really long text inside of a floated div. The width is not calculatable so
+                     it will not properly elide.
+                  </div>
+               </div>
+            </li>
+            <li>
+               The containing element must have <code>overflow: hidden</code>
+               <div title="This is some really long text that is missing overflow hidden. It will not properly elide."
+                       style="text-overflow: ellipsis; height: 28px; width: 700px; white-space: nowrap;
+                           background-color: yellow; border: 1px solid orange; margin-top: 10px;">
+                  This is some really long text that is missing overflow hidden. It will not properly elide.
+               </div>
+            </li>
+            <li>
+               The containing element must have <code>white-space: nowrap</code>
+               <div title="This is some really long text that is missing white-space nowrap. It will not properly elide."
+                       style="text-overflow: ellipsis; overflow: hidden; height: 28px; width: 700px;
+                           background-color: yellow; border: 1px solid orange; margin-top: 10px;">
+                  This is some really long text that is missing white-space nowrap. It will not properly elide.
+               </div>
+            </li>
+            <li>
+               This example has the necessary properties set and works correctly.
+               <div title="This is some really long text that will elide properly since all the values are set."
+                       style="text-overflow: ellipsis; overflow: hidden; height: 28px; width: 700px; white-space: nowrap;
+                          background-color: yellow; border: 1px solid orange; margin-top: 10px;">
+                 This is some really long text that will elide properly since all the values are set.
+               </div>
+            </li>
+         </ul>
+
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/text-overflow">text-overflow</a>
+         </div>
+      </article>
+
+      <!-- Text Decoration -->
+      <article>
+         <h3>A Word on Text Decoration</h3>
+         <p class="fell-English">
+            In the beginning, there was <code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>, and <code>&lt;u&gt;</code>...
+         </p>
+         <p>
+            Today these tags still exist along with the more semantically correct <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>.
+         </p>
+         <p>
+            These tags are useful even today when you want to add a certain level of importance to some text.
+         </p>
+         <div style="border: 1px solid gray; margin-top: 40px;">
+            <div style="float: left; width: 145px; height: 100px; line-height: 100px; color: black;">#ProTip</div>
+            <ul style="margin-top: 0;">
+               <li>Write HTML for robots and the blind.</li>
+               <li>Write CSS for the sighted.</li>
+            </ul>
+         </div>
+      </article>
+
+      <!-- Segue to Vendor Prefixing -->
+      <article class="segue">
+         <h2>Vendor Prefixes</h2>
+      </article>
+
+      <!-- Why Vendor Prefixing -->
+      <article>
+         <h3>What's the Deal with Vendor Prefixes?</h3>
+         <p>
+            The CSS spec is a work-in-progress.
+         </p>
+         <p>
+            Experimental features are added using vendor prefixes.
+         </p>
+         <p>
+            This allows other browsers to safely ignore them.
+         </p>
+         <p>
+            Vendor prefixes are also used on CSS features that are not yet standardized.<br>
+         </p>
+         <p>
+            Some prefixed features are safer to use than others.
+         </p>
+      </article>
+
+      <!-- Flexbox Example -->
+      <article>
+         <h3>FlexBox Example</h3>
+         <p>
+            The CSS working group decided to completely rewrite the Flexible Box Model spec.
+         </p>
+         <p>
+            This was unfortunately after it was already implemented in Chrome 4, Firefox 2, and IE 10...
+         </p>
+         <div class="source">
+            Further Reading: <a href="http://www.html5rocks.com/en/tutorials/flexbox/quick/">Quick Hits with the Flexible Box Model</a>,
+            <a href="http://www.the-haystack.com/2012/01/04/learn-you-a-flexbox/">Learn You a Flexbox for Great Good!</a>
+         </div>
+      </article>
+
+      <!-- Prefix Best Practices -->
+      <article>
+         <h3>Vendor Prefixing Best Practices</h3>
+         <p>
+            Include all code for all vendors and then future-proof with an un-prefixed version at the end.
+         </p>
+         <pre>.myAwesomeGradient {
+  background-image: -webkit-linear-gradient(top, greenyellow, green);
+  background-image:    -moz-linear-gradient(top, greenyellow, green);
+  background-image:     -ms-linear-gradient(top, greenyellow, green);
+  background-image:      -o-linear-gradient(top, greenyellow, green);
+  background-image:         linear-gradient(top, greenyellow, green);
+}</pre>
+         <div style="height: 100px;
+                     background-image: -webkit-linear-gradient(top, greenyellow, green);
+                     background-image:    -moz-linear-gradient(top, greenyellow, green);
+                     background-image:     -ms-linear-gradient(top, greenyellow, green);
+                     background-image:      -o-linear-gradient(top, greenyellow, green);
+                     background-image:         linear-gradient(top, greenyellow, green);">
+         </div>
+      </article>
+
+      <!-- Prefix Crisis -->
+      <article class="smaller">
+         <h3>The Vendor Prefixing Crisis... And It's All Your Fault</h3>
+         <p>
+            You should ALWAYS include all the vendor prefixes.
+         </p>
+         <p>
+            Site authors have a tendency to include only <code>-webkit</code> prefixes on many
+            common CSS properties.
+         </p>
+         <q style="margin-top: 20px; font-size: 30px; margin-right: 100px;">
+            [The missing prefixed properties leads] to a reduced user experience on Opera and Firefox,
+            which don't receive the same shiny effects such as transitions, gradients, and the like,
+            <em>even if the browser supported those effects.</em>
+         </q>
+         <div class='author' style="margin-right: 100px; font-size: 30px;">
+            <a href="http://dev.opera.com/articles/view/opera-mobile-emulator-experimental-webkit-prefix-support/">Bruce Lawson, Opera</a>
+        </div>
+         <p>
+            In light of this, Opera has decided to start implementing some <code>-webkit</code> prefixes.
+         </p>
+         <p>
+            The last time a single vendor emerged as the market leader and developers ignored other
+            platforms was IE 6. <strong>Don't let IE 6 happen again.</strong>
+         </p>
+         <div class="source">
+            Further Reading: <a href="http://lists.w3.org/Archives/Public/www-style/2012Feb/0313.html">W3C meeting minutes Feb. 7, 2012</a>,
+            <a href="http://www.sitepoint.com/w3c-css-webkit-prefix-crisis/#fbid=wH301ssVAwA">The Impending CSS Vendor Prefix Catastrophe</a>
+         </div>
+      </article>
+
+      <!-- Segue to SASS -->
+      <article class="segue">
+         <h2>SASS</h2>
+         <p>
+          <img style="position: absolute; right: 100px;" src='img/sass.gif'>
+        </p>
+      </article>
+
+      <!-- SASS Overview -->
+      <article>
+         <h3>What is SASS?</h3>
+         <p>
+            SASS is a CSS preprocessor that introduces variables, mixins, and selector nesting.
+         </p>
+         <div>
+            <pre>/* SASS code */
+$sassy: #BADA55;
+a {
+  color: $sassy;
+  &:hover { color: lighten($sassy, 20%); }
+  &:visited { color: darken($sassy, 20%); }
+}</pre>
+         </div>
+         <div>
+            <pre>/* Generated CSS */
+a { color: #bada55; }
+a:hover { color: #dceca9; }
+a:visited { color: #86a524; }</pre>
+         </div>
+         <div class="source">
+            Further Reading: <a href="http://sass-lang.com">SASS</a>
+         </div>
+      </article>
+
+      <!-- SASS Variables -->
+      <article>
+         <h3>Variables</h3>
+         <p>
+            Variables in SASS can hold any value that's allowed by a CSS property.
+         </p>
+         <pre> /* SASS code */
+$location: top;
+$color: green;
+$size: 45px;
+$style: dashed;
+
+/* Use #{} in selectors and property names */
+.sassy-#{$location} {
+  border-#{$location}: $size $style $color;
+}</pre>
+         <pre> /* Generated CSS */
+.sassy-top {
+  border-top: 45px dashed green;
+}</pre>
+      </article>
+
+      <!-- SASS Variable Operations -->
+      <article>
+         <h3>Operations on Variables</h3>
+         <p>
+            Variables support standard math operations as well.
+         </p>
+         <pre>/* SASS code */
+$size: 20px;
+
+div.sassy {
+  height: $size * 4;
+  width: $size / 2;
+  padding: $size + 10px;
+  margin: $size - 5px;
+}</pre>
+         <pre>/* Generated CSS */
+div.sassy {
+  height: 80px;
+  width: 10px;
+  padding: 30px;
+  margin: 15px;
+}</pre>
+      </article>
+
+      <!-- SASS Mixins -->
+      <article>
+         <h3>Mixins</h3>
+         <p>
+            Mixins allow re-use of styles, properties, and selectors.
+         </p>
+         <pre>/* SASS code */
+@mixin blue-box {
+  background-color: blue;
+  border: 3px dashed invert(blue);
+}
+
+div.sassy {
+  @include blue-box;
+}</pre>
+         <pre>/* Generated CSS */
+div.sassy {
+  background-color: blue;
+  border: 3px dashed yellow;
+}</pre>
+      </article>
+
+      <!-- SASS Mixin Function Calls -->
+      <article>
+         <h3>Making Generic Mixins</h3>
+         <p>
+            Arguments can be passed to mixins.
+         </p>
+         <pre>/* SASS code */
+@mixin styled-box($color, $size, $style: dashed) {
+  background-color: $color;
+  border: $size $style invert($color);
+}
+
+div.sassy {
+  @include styled-box(blue, 3px);
+}</pre>
+         <pre>/* Generated CSS */
+div.sassy {
+  background-color: blue;
+  border: 3px dashed yellow;
+}</pre>
+      </article>
+
+      <!-- Selector Nesting -->
+      <article>
+         <h3>Selector Nesting</h3>
+         <p>
+            Selector nesting allows you to write more specific selectors without all the copy and paste.
+         </p>
+         <pre>/* SASS code */
+.myClass {
+  color: orange;
+  div {
+    color: green;
+    #myBlueThing { color: blue; }
+  }
+}</pre>
+         <pre>/* Generated CSS */
+.myClass { color: orange; }
+.myClass div { color: green; }
+.myClass div #myBlueThing { color: blue; }
+</pre>
+      </article>
+
+      <!-- Parent Reference -->
+      <article>
+         <h3>Selector Nesting - The Parent Reference</h3>
+         <p>
+            Use <code>&</code> in a selector to reference the parent element.
+         </p>
+         <pre>/* SASS code */
+.myClass {
+  color: blue;
+  &:hover { color: green; }
+  .ie8 & { color: red; }
+  ul {
+    .ie9 & li { color: orange; }
+  }
+}</pre>
+         <pre> /* Generated CSS */
+.myClass { color: blue; }
+.myClass:hover { color: green; }
+.ie8 .myClass { color: red; }
+.ie9 .myClass ul li { color: orange; }</pre>
+      </article>
+
+      <article class="smaller">
+         <h3>@extend</h3>
+         <p>
+            Use the <code>@extend</code> directive to build DRY styling rules
+         </p>
+         <div>
+            <pre style="float: left;">/* SASS code */
+.myClass {
+  border: 1px dashed orange;
+  background-color: yellow;
+}
+
+.otherClass {
+  color: black;
+  text-shadow: 1px 1px 3px gray;
+}
+
+.extendedClass {
+  @extend .myClass, .otherClass;
+  color: green;
+  border-width: 3px;
+}</pre>
+            <pre style="float: right;">/* Generated CSS */
+.myClass, .extendedClass {
+  border: 1px dashed orange;
+  background-color: yellow;
+}
+
+.otherClass, .extendedClass {
+  color: black;
+  text-shadow: 1px 1px 3px gray;
+}
+
+.extendedClass {
+  color: green;
+  border-width: 3px;
+}</pre>
+         </div>
+
+         <div class="source">
+            Source: <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend">SASS Reference: extend</a>
+         </div>
+      </article>
+
+      <!-- Native Functionality Coming -->
+      <article>
+         <h3>Coming in 2015: Native SASS Features</h3>
+         <p>
+            A Working Draft proposal for CSS Variables has been completed.
+         </p>
+         <p>
+            An implementation is available (prefixed) in Chrome Canary.
+            <span style="font-size: 0.7em; font-style: italic; color: gray; ">Side Note - Doesn't a prefixed variable defeat the purpose?</span>
+         </p>
+         <p>
+            A W3C CSS selector hierarchies proposal has been drafted but it is a long way from standardization.
+         </p>
+         <div class="source">
+            Further Reading: <a href="http://www.w3.org/TR/css-variables/">W3C: CSS Variables Module Level 1</a>,
+            <a href="http://trac.webkit.org/changeset/120154">Webkit Changeset 120154</a>,
+            <a href="http://dev.w3.org/csswg/css3-hierarchies/">W3C: CSS Hierarchies Module Level 3</a>
+         </div>
+      </article>
+
+      <!-- Segue to CSS Performance -->
+      <article class="segue">
+         <h2>CSS Performance</h2>
+      </article>
+
+      <!-- Performance Overview -->
+      <article>
+         <h3>Let's Talk Performance</h3>
+         <p>
+            When talking CSS performance, there are several things to keep in mind.
+         </p>
+         <ul>
+            <li>Avoid Reflows</li>
+            <li>Avoid Expensive CSS</li>
+            <li>Selector Performance</li>
+            <li>Use Hardware Accelerated CSS</li>
+         </ul>
+         <div class="source">
+            Source: <a href="http://dl.dropbox.com/u/39519/talks/cssperf/index.html">Paul Irish: CSS Performance</a>
+         </div>
+      </article>
+
+      <!-- Introduction to Reflows -->
+      <article>
+         <h3>Reflows</h3>
+         <p>
+            Reflows are a triggered layout + repaint.
+         </p>
+         <video controls preload autobuffer width="640" height="510" style="margin: 0 auto; display: block;">
+            <source src="assets/geckoreflow-mozillaorg.mp4" type="video/mp4">
+            <source src="assets/geckoreflow-mozillaorg.webm" type="video/webm">
+         </video>
+         <div class="source">
+            Video: <a href="http://www.youtube.com/watch?v=EnJCIlMNY8g">Mozilla Home Page Reflow</a>
+         </div>
+      </article>
+
+      <!-- What Triggers a Reflow -->
+      <article>
+         <h3>What Triggers a Reflow?</h3>
+         <p>
+            Updating the position or size of any visible element will trigger an automatic layout and repaint.
+         </p>
+         <ul>
+            <li>Add, remove, update DOM nodes</li>
+            <li>Hiding a node with <code>display: none</code></li>
+            <li>Animations</li>
+            <li>Adding a stylesheet</li>
+            <li>User resizing the viewport, zooming, scrolling</li>
+         </ul>
+         <p>
+            Reflow calculation is delayed as long as possible to batch changes together.
+         </p>
+         <div class="source">
+            Source: <a href="http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html">How (not) to trigger a layout in WebKit</a>
+            for a comprehensive list of properties that trigger reflows in Webkit browsers.
+         </div>
+      </article>
+
+      <!-- How Can I Avoid a Reflow? -->
+      <article class="smaller">
+         <h3>How Can I Avoid Unnecessary Reflows?</h3>
+         <p>
+            Every page has at least one reflow (the initial layout).
+         </p>
+         <p>
+            The goal is to eliminate unnecessary reflows.
+         </p>
+         <pre>/* Slow - 3 Reflows! */
+var val = $('#item1').css('width'); // Read
+$('#item1').css('width', val + 10); // Write
+val = $('#item2').css('width');     // Read
+$('#item2').css('width', val + 20); // Write
+val = $('#item3').css('width');     // Read
+$('#item3').css('width', val + 30); // Write</pre>
+         <pre>/* Fast - 1 Reflow */
+var val1 = $('#item1').css('width'), // Read
+    val2 = $('#item2').css('width'), // Read
+    val3 = $('#item3').css('width'); // Read
+$('#item1').css('width', val1 + 10); // Write
+$('#item2').css('width', val2 + 20); // Write
+$('#item3').css('width', val3 + 30); // Write</pre>
+         <div class="source">
+            Further Reading: <a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">Rendering: repaint, reflow/relayout, restyle</a>
+         </div>
+      </article>
+
+      <!-- Avoiding Expensive CSS -->
+      <article>
+         <h3>Avoid Expensive CSS</h3>
+         <p>
+            Most CSS styles can be applied in a single pass.
+         </p>
+         <p>
+            Some require multiple passes or more expensive operations.
+         </p>
+         <p>
+            Expensive does not mean - do not use. It means use with restraint and common sense.
+         </p>
+         <ul>
+            <li>@font-face</li>
+            <li>box-shadow</li>
+            <li>opacity on ALL THE THINGS</li>
+            <li>gradients</li>
+            <li><a href="http://textaligncentaur.com/">text-align</a></li>
+         </ul>
+         <div class="source">
+            Source: <a href="http://dl.dropbox.com/u/39519/talks/cssperf/index.html">Avoiding Expensive CSS</a>
+         </div>
+      </article>
+
+      <!-- Selector Performance -->
+      <article class="smaller">
+         <h3>Selector Performance</h3>
+         <h4>
+            Selectors are evaluated right-to-left.
+         </h4>
+         <p>
+            When trying to match an element against the thousands of potential matches in a stylesheet,
+            the best approach is divide and conquer. Starting on the right allows elimination of the
+            largest number of selectors.
+         </p>
+         <p>
+            Previously I mentioned all CSS rules are divided into 4 buckets.
+         </p>
+         <ul>
+            <li>Class - the right most portion of the rule is a class</li>
+            <li>ID - the right most portion of the rule is an ID</li>
+            <li>Tag - the right most portion of the rule is an element</li>
+            <li>Universal - Everything else</li>
+         </ul>
+         <p>
+            <strong>The fastest selectors search a single category.</strong>
+         </p>
+         <p>
+            The Universal category is the slowest of the four.
+         </p>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/Writing_Efficient_CSS">Writing Efficient CSS</a>
+         </div>
+
+      </article>
+
+      <article class="smaller">
+         <h3>Descendant Selectors are Slow</h3>
+         <p>
+           After finding a candidate match with the right-most selector, you need to move up the
+           DOM tree to test the other parts of the selector.
+         </p>
+         <p>
+           The performance is worse with very deep DOM trees.
+         </p>
+         <q style="margin-top: 20px; font-size: 30px; margin-right: 100px;">
+            The descendant selector is the most expensive selector in CSS. It is <em>dreadfully</em>
+            expensive — especially if the selector is in the Tag or Universal Category.
+         </q>
+         <div class="author" style="font-size: 30px; margin-right: 100px; margin-top: 20px;">
+           <a href="https://developer.mozilla.org/en/Writing_Efficient_CSS#Avoid_the_descendant_selector">Dave Hyatt, WebKit Architect</a>
+         </div>
+         <div>
+         <pre style="float: left;">/* Slooooowwww CSS */
+div.myClass div div [type=text] {
+/*...*/
+}</pre>
+           <pre style="float: right;">&lt;!-- Bad news HTML --&gt;
+&lt;div class="myClass"&gt;
+  &lt;div class="not-myClass"&gt;
+    &lt;div class="not-myClass"&gt;
+      &lt;div class="not-myClass"&gt;
+        &lt;div class="not-myClass"&gt;
+          &lt;div class="not-myClass"&gt;
+            &lt;input type="text"&gt;</pre>
+        </div>
+      </article>
+
+      <article>
+         <h3>More on Descendant Selectors</h3>
+         <p>
+            Child selector always preferred over descendant selectors<br>
+            <code>.myClass > #item</code>
+         </p>
+         <p>
+            When descendant selectors are required use the most specific category on the right (class or ID)<br>
+            <code>div .myClass</code>
+         </p>
+         <p>
+            Remember all the SASS selector nesting niceties? Keep performance in mind when using them.
+         </p>
+      </article>
+
+      <article class="smaller">
+         <h3>Selector Style</h3>
+         <p>
+            Some study has been done around the relative speeds of different selector styles.
+            Given a set of rules, create CSS in 3 different styles and compare the render times.
+         </p>
+         <pre style="margin-top: 10px;">/* OOCSS style */
+.box { padding: 25px; border: 1px solid #000; border-radius: 5px; }
+.box-1 { background-color: #FFEE00; }
+.box-2 { background-color: #00FFEE; }
+
+/* SASS @extend style */
+.box-1, .box-2 { padding: 25px; border: 1px solid #000; border-radius: 5px; }
+.box-1 { background-color: #FFEE00; }
+.box-2 { background-color: #00FFEE; }
+
+/* Long form */
+.box-1 {
+  padding:25px;
+  border:1px solid #000;
+  border-radius:5px;
+  background-color:FFEE00;
+}
+.box-2 {
+  padding:25px;
+  border:1px solid #000;
+  border-radius:5px;
+  background-color:00FFEE;
+}</pre>
+         <div class="source">
+            Source: <a href="http://screwlewse.com/2010/08/different-css-techniques-and-their-performance/">Different CSS Techniques and Their Performance</a>
+         </div>
+      </article>
+
+      <article class="smaller">
+         <h3>Selector Style Performance Results</h3>
+         <table id="performanceDataTable">
+            <thead>
+            <tr>
+               <th></th>
+               <th>SASS</th>
+               <th>SASS ID</th>
+               <th>OOCSS</th>
+               <th>OOCSS ID</th>
+               <th>Long</th>
+               <th>Long ID</th>
+               <th>No CSS</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+               <th>IE 9</th>
+               <td>6</td>
+               <td>6</td>
+               <td>5</td>
+               <td>5</td>
+               <td>51</td>
+               <td>50</td>
+               <td>0</td>
+            </tr>
+            <tr>
+               <th>FF 13</th>
+               <td>12</td>
+               <td>12</td>
+               <td>9</td>
+               <td>8</td>
+               <td>48</td>
+               <td>48</td>
+               <td>5</td>
+            </tr>
+            <tr>
+               <th>Chrome 20</th>
+               <td>11</td>
+               <td>16</td>
+               <td>12</td>
+               <td>9</td>
+               <td>70</td>
+               <td>55</td>
+               <td>0</td>
+            </tr>
+            <tr>
+               <th>Opera 12</th>
+               <td>15</td>
+               <td>13</td>
+               <td>12</td>
+               <td>11</td>
+               <td>179</td>
+               <td>176</td>
+               <td>6</td>
+            </tr>
+            <tr>
+               <th>Safari 5.1.7</th>
+               <td>9</td>
+               <td>10</td>
+               <td>8</td>
+               <td>8</td>
+               <td>51</td>
+               <td>51</td>
+               <td>0</td>
+            </tr>
+            </tbody>
+         </table>
+         <div id="performanceResults"></div>
+         <div class="source">
+            Source <a href="http://www.screwlewse.com/labs/css-performance-test.php">CSS Formatting Performance Test Page</a>
+         </div>
+      </article>
+
+
+
+      <article>
+        <h1>
+          Title Goes Here Up
+          <br>
+          To Two Lines
+        </h1>
+        <p>
+          Sergey Brin
+          <br>
+          May 10, 2011
+        </p>
+      </article>
+      
+      <article>
+        <p>
+          This is a slide with just text. This is a slide with just text.
+          This is a slide with just text. This is a slide with just text.
+          This is a slide with just text. This is a slide with just text.
+        </p>
+        <p>
+          There is more text just underneath.
+        </p>
+      </article>
+
+      <article>
+        <h3>
+          Simple slide with header and text
+        </h3>
+        <p>
+          This is a slide with just text. This is a slide with just text.
+          This is a slide with just text. This is a slide with just text.
+          This is a slide with just text. This is a slide with just text.
+        </p>
+        <p>
+          There is more text just underneath with a <code>code sample: 5px</code>.
+        </p>
+      </article>
+
+      <article class='smaller'>
+        <h3>
+          Simple slide with header and text (small font)
+        </h3>
+        <p>
+          This is a slide with just text. This is a slide with just text.
+          This is a slide with just text. This is a slide with just text.
+          This is a slide with just text. This is a slide with just text.
+        </p>
+        <p>
+          There is more text just underneath with a <code>code sample: 5px</code>.
+        </p>
+      </article>
+
+      <article>
+        <h3>
+          Slide with bullet points and a longer title, just because we
+          can make it longer
+        </h3>
+        <ul>
+          <li>
+            Use this template to create your presentation
+          </li>
+          <li>
+            Use the provided color palette, box and arrow graphics, and
+            chart styles
+          </li>
+          <li>
+            Instructions are provided to assist you in using this
+            presentation template effectively
+          </li>
+          <li>
+            At all times strive to maintain Google's corporate look and feel
+          </li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>
+          Slide with bullet points that builds
+        </h3>
+        <ul class="build">
+          <li>
+            This is an example of a list
+          </li>
+          <li>
+            The list items fade in
+          </li>
+          <li>
+            Last one!
+          </li>
+        </ul>
+
+        <div class="build">
+          <p>Any element with child nodes can build.</p>
+          <p>It doesn't have to be a list.</p>
+        </div>
+      </article>
+
+      <article class='smaller'>
+        <h3>
+          Slide with bullet points (small font)
+        </h3>
+        <ul>
+          <li>
+            Use this template to create your presentation
+          <li>
+            Use the provided color palette, box and arrow graphics, and
+            chart styles
+          <li>
+            Instructions are provided to assist you in using this
+            presentation template effectively
+          <li>
+            At all times strive to maintain Google's corporate look and feel
+        </ul>
+      </article>
+
+      <article>
+        <h3>
+          Slide with a table
+        </h3>
+        
+        <table>
+          <tr>
+            <th>
+              Name
+            <th>
+              Occupation
+          <tr>
+            <td>
+              Luke Mah�
+            <td>
+              V.P. of Keepin� It Real
+          <tr>
+            <td>
+              Marcin Wichary
+            <td>
+              The Michael Bay of Doodles
+        </table>
+      </article>
+      
+      <article class='smaller'>
+        <h3>
+          Slide with a table (smaller text)
+        </h3>
+        
+        <table>
+          <tr>
+            <th>
+              Name
+            <th>
+              Occupation
+          <tr>
+            <td>
+              Luke Mah�
+            <td>
+              V.P. of Keepin� It Real
+          <tr>
+            <td>
+              Marcin Wichary
+            <td>
+              The Michael Bay of Doodles
+        </table>
+      </article>
+      
+      <article>
+        <h3>
+          Styles
+        </h3>
+        <ul>
+          <li>
+            <span class='red'>class="red"</span>
+          <li>
+            <span class='blue'>class="blue"</span>
+          <li>
+            <span class='green'>class="green"</span>
+          <li>
+            <span class='yellow'>class="yellow"</span>
+          <li>
+            <span class='black'>class="black"</span>
+          <li>
+            <span class='white'>class="white"</span>
+          <li>
+            <b>bold</b> and <i>italic</i>
+        </ul>
+      </article>
+      
+      <article>
+        <h2>
+          Segue slide
+        </h2>
+      </article>
+
+      <article>
+        <h3>
+          Slide with an image
+        </h3>
+        <p>
+          <img style='height: 500px' src='images/example-graph.png'>
+        </p>
+        <div class='source'>
+          Source: Sergey Brin
+        </div>
+      </article>
+
+      <article>
+        <h3>
+          Slide with an image (centered)
+        </h3>
+        <p>
+          <img class='centered' style='height: 500px' src='images/example-graph.png'>
+        </p>
+        <div class='source'>
+          Source: Larry Page
+        </div>
+      </article>
+
+      <article class='fill'>
+        <h3>
+          Image filling the slide (with optional header)
+        </h3>
+        <p>
+          <img src='images/example-cat.jpg'>
+        </p>
+        <div class='source white'>
+          Source: Eric Schmidt
+        </div>
+      </article>
+
+      <article>
+        <h3>
+          This slide has some code
+        </h3>
+        <section>
+        <pre>
+&lt;script type='text/javascript'&gt;
+  // Say hello world until the user starts questioning
+  // the meaningfulness of their existence.
+  function helloWorld(world) {
+    for (var i = 42; --i &gt;= 0;) {
+      alert('Hello ' + String(world));
+    }
+  }
+&lt;/script&gt;
+&lt;style&gt;
+  p { color: pink }
+  b { color: blue }
+  u { color: 'umber' }
+&lt;/style&gt;
+</pre>
+        </section>
+      </article>
+      
+      <article class='smaller'>
+        <h3>
+          This slide has some code (small font)
+        </h3>
+        <section>
+        <pre>
+&lt;script type='text/javascript'&gt;
+  // Say hello world until the user starts questioning
+  // the meaningfulness of their existence.
+  function helloWorld(world) {
+    for (var i = 42; --i &gt;= 0;) {
+      alert('Hello ' + String(world));
+    }
+  }
+&lt;/script&gt;
+&lt;style&gt;
+  p { color: pink }
+  b { color: blue }
+  u { color: 'umber' }
+&lt;/style&gt;
+</pre>
+        </section>
+      </article>
+      
+      <article>
+        <q>
+          The best way to predict the future is to invent it.
+        </q>
+        <div class='author'>
+          Alan Kay
+        </div>
+      </article>
+      
+      <article class='smaller'>
+        <q>
+          A distributed system is one in which the failure of a computer 
+          you didn�t even know existed can render your own computer unusable.
+        </q>
+        <div class='author'>
+          Leslie Lamport
+        </div>
+      </article>
+      
+      <article class='nobackground'>
+        <h3>
+          A slide with an embed + title
+        </h3>
+        
+        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
+      </article>
+
+      <article class='nobackground'>
+        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
+      </article>
+
+      <article class='fill'>
+        <h3>
+          Full-slide embed with (optional) slide title on top
+        </h3>
+        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
+      </article>
+      
+      <article>
+        <h3>
+          Thank you!
+        </h3>
+        
+        <ul>
+          <li>
+            <a href='http://www.google.com'>google.com</a>
+        </ul>
+      </article>
+
+    </section>
+
+    <script src="js/lib/jquery-1.7.2.min.js"></script>
+    <script src="js/lib/highcharts.js"></script>
+    <script src="js/charting.js"></script>
+
+  </body>
+</html>
