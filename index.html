@@ -67,6 +67,14 @@
        font-family: 'IM Fell English SC', serif;
     }
 
+    .exampleSpacing {
+       margin-top: 20px;
+    }
+
+    .smaller .exampleSpacing {
+       margin-top: 10px;
+    }
+
     .text-demo-box {
        height: 80px;
        width: 120px;
@@ -99,6 +107,28 @@
        margin-bottom: 10px;
        outline: 1px solid red;
     }
+
+    .box {
+       border: 3px solid gray;
+    }
+
+    .box1 {
+       background-color: yellow;
+       border-color: orangered;
+    }
+
+    .box2 {
+       background-color: lightblue;
+    }
+
+    .box3 {
+       background-color: #90ee90;
+       border-color: green;
+    }
+
+    .box-container {
+       outline: 1px dashed gray;
+    }
     
   </style>
 
@@ -114,7 +144,7 @@
          <h1>
             Getting Started with CSS
          </h1>
-         <p>Jeff Horak<br>June xx, 2012</p>
+         <p>Jeff Horak<br>July 5, 2012</p>
       </article>
 
       <!-- Agenda -->
@@ -863,9 +893,9 @@ div { background-color: #202020; }</pre>
 div {
   height: 50px;
   width: 300px;
-  background-color: #ADFF2F;
+  background-color: #ADFF2F; /* greenyellow */
   padding: 45px;
-  border: 45px solid #ADD8E6;
+  border: 45px solid #ADD8E6; /* lightblue */
   margin: 45px;
 }</pre>
          <div class="source">
@@ -883,13 +913,13 @@ div {
          <p>
             Block-level elements are displayed vertically stacked starting at the top.
          </p>
-         <div style="margin-top: 20px; background-color: yellow; border: 3px solid orangered;">
+         <div class="box box1 exampleSpacing">
             Block 1
          </div>
-         <div style="background-color: lightblue; border: 3px solid gray;">
+         <div class="box box2">
             Block 2
          </div>
-         <div style="background-color: #90ee90; border: 3px solid green;">
+         <div class="box box3">
             Block 3
          </div>
          <div class="source">
@@ -908,7 +938,7 @@ div {
             <li>Blocks expand to use all available horizontal space</li>
             <li>Blocks expand vertically to fully contain in-flow child elements as part of their footprint.</li>
             <li>Blocks create a new block-formatting context (more on this later)</li> <!-- TODO link -->
-            <li>The top and bottom margins between block elements collapse</li>
+            <li>Collapsing Margins</li> <!-- TODO link -->
          </ul>
       </article>
 
@@ -943,16 +973,121 @@ div {
          <p>
             Normal flow inline boxes are arranged horizontally within the layout of the surrounding elements.
          </p>
-         <div style="margin-top: 20px;">
+         <div class="exampleSpacing" style="padding: 10px; border: 1px dashed purple;">
             Text before
-            <span style="background-color: yellow; border: 3px solid orangered;">Inline 1</span>
-            <span style="background-color: lightblue; border: 3px solid gray;">Inline 2</span>
-            <span style="background-color: #90ee90; border: 3px solid green;">Inline 3</span>
+            <span class="box box1">Inline 1</span>
+            <span class="box box2">Inline 2</span>
+            <span class="box box3">Inline 3</span>
             more text after.
          </div>
          <div class="source">
             Further Reading: <a href="https://developer.mozilla.org/en/CSS/Visual_formatting_model">Visual Formatting Model</a>
          </div>
+      </article>
+
+      <!-- Inline Box Spacing -->
+      <article>
+         <h3>Inline Box Spacing</h3>
+         <p>
+            The spaces and newlines in the mark-up are reflected as spacing between inline elements.
+         </p>
+         <pre>
+&lt;span class="inline-box1"&gt;Inline 1&lt;/span&gt;
+&lt;span class="inline-box2"&gt;Inline 2&lt;/span&gt;
+&lt;span class="inline-box3"&gt;Inline 3&lt;/span&gt;</pre>
+         <p>
+            <span class="box box1">Inline 1</span>
+            <span class="box box2">Inline 2</span>
+            <span class="box box3">Inline 3</span>
+         </p>
+         <pre>&lt;span
+   class="inline-box1"&gt;Inline 1&lt;/span&gt;&lt;span
+   class="inline-box2"&gt;Inline 2&lt;/span&gt;&lt;span
+   class="inline-box3"&gt;Inline 3&lt;/span&gt;</pre>
+         <p>
+            <span
+                 class="box box1">Inline 1</span><span
+                 class="box box2">Inline 2</span><span
+                 class="box box3">Inline 3</span>
+         </p>
+      </article>
+
+      <!-- Vertical Padding, Border, Margin -->
+      <article>
+         <h3>Inline Boxes and Vertical Padding, Border, Margin</h3>
+         <p>
+            Vertical <code>padding</code>, <code>border</code>, and <code>margin</code>s do not influence the flow.
+         </p>
+         <p>
+            These properties are applied at the top and bottom of the element's content-box rather
+            than the line-height.
+         </p>
+         <pre>
+&lt;span class="box1"&gt;Inline 1&lt;/span&gt;
+&lt;span class="box2" style="padding: 30px; border: 30px solid purple;"&gt;
+   Inline 2
+&lt;/span&gt;</pre>
+         <p class="box-container" style="margin-top: 70px">
+            <span class="box box1">Inline 1</span>
+            <span class="box box2" style="padding: 30px; border: 30px solid purple;">Inline 2</span>
+         </p>
+      </article>
+
+      <!-- Sizing Inline Boxes -->
+      <article class="smaller">
+         <h3>Sizing Inline Boxes</h3>
+         <pre>
+&lt;span class="box1"&gt;Inline 1&lt;/span&gt;
+&lt;span class="box2" style="line-height: 100px; border: 10px solid purple;"&gt;
+   Inline 2
+&lt;/span&gt;</pre>
+         <p class="box-container">
+            <span class="box box1">Inline 1</span>
+            <span class="box box2" style="line-height: 100px; border: 30px solid purple;">Inline 2</span>
+            Use line-height to size a span
+         </p>
+         <pre>
+&lt;span class="box1" style="height: 1000px; width: 1000px;"&gt;Inline 1&lt;/span&gt;</pre>
+         <p class="box-container">
+            <span class="box box1" style="height: 1000px; width: 1000px;">Inline 1</span>
+            Height and width are ignored
+         </p>
+         <pre>
+&lt;span class="box1" style="line-height: 0;"&gt;Inline 1&lt;/span&gt;
+</pre>
+         <p class="box-container">
+            <span class="box box1" style="line-height: 0">Inline 1</span>
+         </p>
+         <p>
+            Inline elements size down to the minimum height to display the content box.
+         </p>
+      </article>
+
+      <!-- Inline Block -->
+      <article class="smaller">
+         <h3><code>display: inline-block</code></h3>
+         <p>
+            Inline-block boxes generate a block box that is flowed with surrounding content as if it
+            were an inline box.
+         </p>
+         <pre>
+&lt;span class="box1" style="display: inline-block;
+                          height: 70px;
+                          width: 70px;"&gt;Inline 1&lt;/span&gt;</pre>
+         <p class="box-container">
+            <span class="box box1" style="display: inline-block; height: 70px; font-size: 1.2em; width: 70px;">Inline 2</span>
+         </p>
+         <p>
+            Since the content is a block, you can apply <code>height</code>, <code>width</code>, and
+            vertical <code>margin</code>s.
+         </p>
+         <pre>
+&lt;span class="box1" style="display: inline-block;
+                          border: 30px solid purple;"&gt;Inline 1&lt;/span&gt;</pre>
+         <p class="box-container">
+            <span class="box box1" style="display: inline-block; border: 30px solid purple;">Inline 1</span>
+            Border included in the flow.
+         </p>
       </article>
 
       <!-- Flow -->
@@ -962,8 +1097,8 @@ div {
             Elements on the page are rendered as either:
          </p>
          <ul>
-            <li>In-Flow (Normal Flow)</li>
-            <li>Out-of-Flow (Positioned)</li>
+            <li>In-Flow (aka Normal Flow, Non-Replaced)</li>
+            <li>Out-of-Flow (aka Positioned, Replaced)</li>
             <li>Floated</li>
          </ul>
          <p>
@@ -972,11 +1107,22 @@ div {
          </p>
       </article>
 
-      <!-- In-Flow -->
       <article>
          <h3>In-Flow</h3>
          <p>
-            Normal flow <code>block</code> elements are positioned vertically one after the other
+            An in-flow layout positions elements adjacent to one another as either a block or inline element.
+         </p>
+         <p>
+            Block elements contain their in-flow children. These make up the block's footprint and determine
+            its size (if none is otherwise specified).
+         </p>
+      </article>
+
+      <!-- In-Flow Static-->
+      <article>
+         <h3><code>position:static</code></h3>
+         <p>
+            Normal flow static <code>block</code> elements are positioned vertically one after the other
             starting in the upper left.
          </p>
          <div style="margin-top: 20px; background-color: yellow; border: 3px solid orangered;">
@@ -989,18 +1135,221 @@ div {
             Block 3
          </div>
          <p>
-            Normal flow <code>inline</code> elements are positioned horizontally one after another.
+            Normal flow static <code>inline</code> elements are positioned horizontally one after another.
          </p>
-         <div style="margin-top: 20px;">
-            Text before
+         <div class="exampleSpacing">
             <span style="background-color: yellow; border: 3px solid orangered;">Inline 1</span>
             <span style="background-color: lightblue; border: 3px solid gray;">Inline 2</span>
             <span style="background-color: #90ee90; border: 3px solid green;">Inline 3</span>
-            more text after.
          </div>
          <p>
-            Normal flow elements do not overlap.
+            <code>left</code>, <code>right</code>, <code>top</code>, and <code>bottom</code> have no effect
+            on statically positioned elements.
          </p>
+      </article>
+
+      <!-- In-Flow Relative Position -->
+      <article>
+         <h3><code>position: relative</code></h3>
+         <p>
+            Relatively positioned items are drawn normally in the layout and then shifted by some amount.
+            This leaves a hole in the layout where they normally would have been with <code>position: static</code>.
+         </p>
+         <pre>
+&lt;span class="box1"&gt;Inline 1&lt;/span&gt;
+&lt;span class="box2" style="position:relative; left:20px; top:20px;"&gt;
+  Inline 2
+&lt;/span&gt;
+&lt;span class="box3"&gt;Inline 3&lt;/span&gt;</pre>
+         <p class="box-container">
+            <span class="box box1">Inline 1</span>
+            <span class="box box2" style="position: relative;left: 20px; top: 20px;">Inline 2</span>
+            <span class="box box3">Inline 3</span>
+         </p>
+         <p>
+            The <code>left</code>, <code>right</code>, <code>top</code>, and <code>bottom</code> properties
+            are used to adjust the box, but cannot be used to change its size.
+         </p>
+         <div class="source">
+            Further Reading: <a href="http://www.css-101.org/relative-positioning/index.php">Relative Positioning</a>
+         </div>
+      </article>
+
+      <!-- Out of Flow -->
+      <article>
+         <h3>Out-of-Flow</h3>
+         <p>
+            Out-of-flow elements do not any space allocated for them in the layout. Instead, these elements
+            are placed relative to its closest positioned ancestor or the containing block.
+         </p>
+         <p>
+            Since space is not allocated for these elements, they are not included in the footprint
+            of an ancestor block element.
+         </p>
+         <p>
+            The margins on out-of-flow elements do not collapse.
+         </p>
+         <p>
+            The <code>left</code>, <code>right</code>, <code>top</code>, and <code>bottom</code> properties
+            are used to adjust the box, but can also be used to change its size.
+         </p>
+      </article>
+
+      <!-- Out-of-flow with Absolutely Positioned -->
+      <article class="smaller">
+         <h3><code>position: absolute</code></h3>
+         <p>
+            Absolutely positioned elements are drawn relative to an ancestor marked as
+            <code>position: relative</code> or the root element.
+         </p>
+         <pre>
+&lt;div style="position: relative; height: 250px;"&gt;
+   Relatively Positioned Element
+   &lt;div style="position: absolute; left: 25px; top: 20px;
+               bottom: 50px; right: 5px;"&gt;
+      Absolutely Positioned Element
+   &lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div class="box-container" style="position: relative; height: 130px;">
+            Relatively Positioned Element
+            <div class="box box1" style="position: absolute; left: 25px; top: 20px; bottom: 50px; right: 5px;">
+               Absolutely Positioned Element
+            </div>
+         </div>
+         <p></p>
+         <div class="box-container" style="position: relative;">
+            <div class="box box1" style="position: absolute; font-size: 0.7em; left: 25px; right: 5px;">
+               Same example without explicit height or text in relative element
+            </div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="http://www.css-101.org/absolute-positioning/index.php">Absolute Positioning</a>
+         </div>
+      </article>
+
+      <!-- Fixed Position -->
+      <article>
+         <h3><code>position: fixed</code></h3>
+         <p>
+            Fixed position elements are drawn relative to the viewport on screen-type media.
+         </p>
+         <p>
+            In print media, fixed position elements are repeated on every printed page.
+         </p>
+         <p>
+            Fixed position is a special case of absolute position.
+         </p>
+         <div class="source">
+            Further Reading: <a href="http://www.css-101.org/fixed-positioning/index.php">Fixed Positioning</a>
+         </div>
+      </article>
+
+      <!-- Floats -->
+      <article>
+         <h3>Floats</h3>
+         <p>
+            Floats are initially positioned as if they are in-flow elements. Then the floated elemented
+            is pushed left or right until the outer edge hits the containing block's edge or another float.
+         </p>
+         <p>
+            When stacking floats if there is not enough horizontal room for the float, it wraps to
+            the next line.
+         </p>
+         <p>
+            In-flow elements within the same block formatting context are positioned around the floated
+            element.
+         </p>
+         <p>
+            In general, you should provide an explicit width on floated elements.
+         </p>
+      </article>
+
+      <!-- Float Example -->
+      <article>
+         <h3>Floating Example</h3>
+         <p>
+            The <a href="http://hipsteripsum.me">text</a> in this example wraps cleanly around floated
+            elements.
+         </p>
+         <p>
+            Also, notice how the position of the float within the mark-up effects where the float is drawn.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: right"&gt;Right floated box&lt;/div&gt;
+   (Text)
+   &lt;div style="float: left"&gt;Left floated box&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div class="box-container">
+            <div class="box box1" style="float: right">Right floated Box</div>
+            Single-origin coffee truffaut banh mi umami williamsburg eiusmod, fap gastropub officia.
+            Id occupy do, retro et kogi reprehenderit culpa bushwick mlkshk keytar.
+            <div class="box box1" style="float: left">Left floated Box</div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/float">Float</a>
+         </div>
+      </article>
+
+      <!-- Sizing with Floats -->
+      <article class="smaller">
+         <h3>Sizing with Floats</h3>
+         <p>
+            Floats that are longer than the containing block's footprint can cause layout issues.
+         </p>
+         <div class="box-container exampleSpacing">
+            <div class="box box1" style="float: left; width: 33%;">Direct trade flexitarian ennui mixtape occaecat, cliche sint umami photo booth.</div>
+            Typewriter wes anderson twee.
+         </div>
+
+         <div class="box-container exampleSpacing" style="overflow: hidden;
+                                                          height: auto;
+                                                          position: absolute;
+                                                          top: 50%;
+                                                          left: 60px;
+                                                          right: 60px;">
+            <div class="box box1" style="float: left; width: 33%;"> +1 wolf mixtape, proident sriracha odio banksy sapiente cosby sweater raw denim eu.</div>
+            Kale chips brooklyn enim, banh mi eu pop-up 3 wolf moon.
+            <p>
+              Use <code>overflow: hidden; height: auto;</code> to correctly size the parent.
+            </p>
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/float">Float</a>
+         </div>
+      </article>
+
+      <!-- In-Flow Element Margins and Floats  -->
+      <article class="smaller">
+         <h3>In-Flow Element Boxes and Floats</h3>
+         <p>
+            Adding a margin to the in-flow element does not work as you might expect with floated elements.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
+   &lt;div style="margin-left: 20px;"&gt;In-flow&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div class="exampleSpacing box-container" style="overflow: hidden;">
+            <div class="box box1" style="float: left; padding: 4px;">Floated Left</div>
+            <div class="box box3" style="margin-left: 20px;">In-flow</div>
+         </div>
+         <p>
+            In this example, a 20px left margin has been applied but the third box is still up against
+            the float.
+         </p>
+         <p>
+            This example shows what is going on.
+         </p>
+         <pre style="margin-top: 20px">
+&lt;div style="margin-left: 20px; border-width: 15px;"&gt;In-flow&lt;/div&gt;</pre>
+         <div class="exampleSpacing box-container" style="overflow: hidden;">
+            <div class="box box1" style="float: left; padding: 4px;">Floated Left</div>
+            <div class="box box3" style="margin-left: 20px; border-width: 15px">In-flow</div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="http://www.css-101.org/float/01.php">Floats</a>
+         </div>
       </article>
 
       <!-- Segue to Colors, Shadows, and Gradients -->
