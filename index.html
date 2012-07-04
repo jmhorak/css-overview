@@ -12,6 +12,15 @@
   URL: http://code.google.com/p/html5slides/
 -->
 
+<!--
+   Getting Started with CSS
+
+   Author: Jeff Horak
+   July 2012
+
+   URL: http://jmhorak.github.com/css-overview
+-->
+
 <html xmlns="http://www.w3.org/1999/html">
   <head>
     <title>Getting Started with CSS</title>
@@ -102,6 +111,23 @@
        background-image:         linear-gradient(bottom, lightgray, white 50%);
     }
 
+    .colorSegue {
+       background-image: -webkit-linear-gradient(top, greenyellow, green);
+       background-image:    -moz-linear-gradient(top, greenyellow, green);
+       background-image:     -ms-linear-gradient(top, greenyellow, green);
+       background-image:      -o-linear-gradient(top, greenyellow, green);
+       background-image:         linear-gradient(top, greenyellow, green);
+    }
+
+    .colorTitle {
+       background-color: rgba(255, 255, 255, 0.2);
+       text-shadow: 3px 1px 4px #202020;
+       width: 100%;
+       right: 0;
+       text-indent: 40px;
+       padding-right: 0;
+    }
+
     .collapseMargin {
        margin-top: 20px;
        margin-bottom: 10px;
@@ -129,15 +155,29 @@
     .box-container {
        outline: 1px dashed gray;
     }
+
+    .bfcDiv {
+       background-color: orangered;
+    }
+
+    .bfcP {
+       margin: 20px 0;
+       background-color: yellow;
+    }
+
+    .bfc-floated-p {
+       padding: 20px; float: left;
+    }
+
+    .bfc-floated-parent-div {
+       background-color: lightblue;
+    }
     
   </style>
 
   <body style='display: none'>
 
     <section class='slides layout-regular'>
-      
-      <!-- Your slides (<article>s) go here. Delete or comment out the
-           slides below. -->
 
       <!-- Title -->
       <article class="segue">
@@ -153,7 +193,6 @@
             Agenda
          </h3>
          <ul>
-            <li>Why Learn CSS</li>
             <li>Browser Basics and Tooling</li>
             <li>Selectors</li>
             <li>Units of Measurement</li>
@@ -164,16 +203,6 @@
             <li>SASS</li>
             <li>CSS Performance</li>
          </ul>
-      </article>
-
-      <!-- Why Learn CSS? -->
-      <article>
-         <h3>
-            Why Learn CSS
-         </h3>
-         <p>
-            <!-- TODO -->
-         </p>
       </article>
 
       <!-- Segue to Browser Basics -->
@@ -620,7 +649,9 @@ div { background-color: #202020; }</pre>
                   User Agent
                </td>
                <td>
-                  The default stylesheet for the device rendering the output. This is usually a web browser but may be a phone, TV, or <a href="http://media.photobucket.com/image/webos%20toaster/g_manq/webOSToaster.jpg">household appliance</a>
+                  The default stylesheet for the device rendering the output. This is usually a web
+                  browser but may be a phone, TV, or
+                  <a href="http://media.photobucket.com/image/webos%20toaster/g_manq/webOSToaster.jpg">household appliance</a>
                </td>
             </tr>
             <tr>
@@ -628,7 +659,9 @@ div { background-color: #202020; }</pre>
                   User Stylesheet
                </td>
                <td>
-                  Most desktop browsers allow users to provide their own <a href="https://twitter.com/paul_irish/status/217303604254613504">custom defaults</a> in the user stylesheet.
+                  Most desktop browsers allow users to provide their own
+                  <a href="https://twitter.com/paul_irish/status/217303604254613504">custom defaults</a>
+                  in the user stylesheet.
                </td>
             </tr>
             <tr>
@@ -636,7 +669,8 @@ div { background-color: #202020; }</pre>
                   Author Stylesheet
                </td>
                <td>
-                  Any rule imported via a <code>link</code> or <code>style</code> element or in an element's <code>style</code> attribute.
+                  Any rule imported via a <code>link</code> or <code>style</code> element or in an
+                  element's <code>style</code> attribute.
                </td>
             </tr>
          </table>
@@ -913,14 +947,10 @@ div {
          <p>
             Block-level elements are displayed vertically stacked starting at the top.
          </p>
-         <div class="box box1 exampleSpacing">
-            Block 1
-         </div>
-         <div class="box box2">
-            Block 2
-         </div>
-         <div class="box box3">
-            Block 3
+         <div class="exampleSpacing box-container">
+            <div class="box box1">Block 1</div>
+            <div class="box box2">Block 2</div>
+            <div class="box box3">Block 3</div>
          </div>
          <div class="source">
             Further Reading: <a href="https://developer.mozilla.org/En/HTML/Block-level_elements">Block-Level Elements</a>
@@ -995,7 +1025,7 @@ div {
 &lt;span class="inline-box1"&gt;Inline 1&lt;/span&gt;
 &lt;span class="inline-box2"&gt;Inline 2&lt;/span&gt;
 &lt;span class="inline-box3"&gt;Inline 3&lt;/span&gt;</pre>
-         <p>
+         <p class="box-container">
             <span class="box box1">Inline 1</span>
             <span class="box box2">Inline 2</span>
             <span class="box box3">Inline 3</span>
@@ -1004,7 +1034,7 @@ div {
    class="inline-box1"&gt;Inline 1&lt;/span&gt;&lt;span
    class="inline-box2"&gt;Inline 2&lt;/span&gt;&lt;span
    class="inline-box3"&gt;Inline 3&lt;/span&gt;</pre>
-         <p>
+         <p class="box-container">
             <span
                  class="box box1">Inline 1</span><span
                  class="box box2">Inline 2</span><span
@@ -1125,22 +1155,18 @@ div {
             Normal flow static <code>block</code> elements are positioned vertically one after the other
             starting in the upper left.
          </p>
-         <div style="margin-top: 20px; background-color: yellow; border: 3px solid orangered;">
-            Block 1
-         </div>
-         <div style="background-color: lightblue; border: 3px solid gray;">
-            Block 2
-         </div>
-         <div style="background-color: #90ee90; border: 3px solid green;">
-            Block 3
+         <div class="exampleSpacing box-container">
+            <div class="box box1">Block 1</div>
+            <div class="box box2">Block 2</div>
+            <div class="box box3">Block 3</div>
          </div>
          <p>
             Normal flow static <code>inline</code> elements are positioned horizontally one after another.
          </p>
-         <div class="exampleSpacing">
-            <span style="background-color: yellow; border: 3px solid orangered;">Inline 1</span>
-            <span style="background-color: lightblue; border: 3px solid gray;">Inline 2</span>
-            <span style="background-color: #90ee90; border: 3px solid green;">Inline 3</span>
+         <div class="exampleSpacing box-container">
+            <span class="box box1">Inline 1</span>
+            <span class="box box2">Inline 2</span>
+            <span class="box box3">Inline 3</span>
          </div>
          <p>
             <code>left</code>, <code>right</code>, <code>top</code>, and <code>bottom</code> have no effect
@@ -1311,7 +1337,7 @@ div {
             <div class="box box1" style="float: left; width: 33%;"> +1 wolf mixtape, proident sriracha odio banksy sapiente cosby sweater raw denim eu.</div>
             Kale chips brooklyn enim, banh mi eu pop-up 3 wolf moon.
             <p>
-              Use <code>overflow: hidden; height: auto;</code> to correctly size the parent.
+              Use <code>overflow: hidden;</code> to correctly size the parent.
             </p>
          </div>
          <div class="source">
@@ -1339,7 +1365,7 @@ div {
             the float.
          </p>
          <p>
-            This example shows what is going on.
+            This example shows what's going on.
          </p>
          <pre style="margin-top: 20px">
 &lt;div style="margin-left: 20px; border-width: 15px;"&gt;In-flow&lt;/div&gt;</pre>
@@ -1352,9 +1378,152 @@ div {
          </div>
       </article>
 
+      <!-- Clearing a Float -->
+      <article class="smaller">
+         <h3>Clearing Floats</h3>
+         <p>
+            The clear property indicates which sides of element's box may not be adjacent to an
+            earlier floating box.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
+   &lt;div style="float: right; height: 60px;"&gt;Floated right&lt;/div&gt;
+   &lt;div style="clear: left"&gt;In-flow&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div class="box-container">
+            <div class="box box1" style="float: left;">Floated left</div>
+            <div class="box box2" style="float: right; height: 60px;">Floated right</div>
+            <div class="box box3" style="clear: left;">In-flow</div>
+         </div>
+         <p>
+            The last <code>div</code> clears the left side. The left floated <code>div</code> is moved
+            to above the in-flow element.
+         </p>
+         <p>
+            <strong>Note</strong>: Clear only operates on elements in the same block formatting context
+         </p>
+         <div class="source">
+            Further Reading: <a href="http://www.w3.org/wiki/CSS/Properties/clear">Clear</a>
+         </div>
+      </article>
+
+      <!-- Block Formatting Context -->
+      <article>
+         <h3>Block Formatting Context</h3>
+         <p>
+            A block formatting context is any box that satifies at least one of the following:
+         </p>
+         <ul>
+            <li>The value of <code>float</code> is not <code>none</code></li>
+            <li>The value of <code>overflow</code> is not <code>visible</code></li>
+            <li>The value of <code>display</code> is <code>table-cell</code>, <code>table-caption</code>,
+                or <code>inline-block</code>
+            </li>
+            <li>The value of <code>position</code> is neither <code>static</code> nor <code>relative</code></li>
+         </ul>
+         <div class="source">
+            Source: <a href="http://www.tjkdesign.com/articles/block-formatting-contexts_and_hasLayout.asp">
+               Block Formatting Contexts
+            </a>
+         </div>
+      </article>
+
+      <!-- Block Formatting Context Prevent Margin Collasping -->
+      <article>
+         <h3>Block Formatting Contexts</h3>
+         <p>
+            Block formatting contexts prevent margin collapsing.
+         </p>
+         <pre>
+&lt;style&gt;
+   p { margin:20px 0; background-color: yellow; }
+   div { background-color: orangered; }
+&lt;/style&gt;
+&lt;div&gt;&lt;p&gt;Text in a paragraph&lt;/p&gt;&lt;/div&gt;
+&lt;div&gt;&lt;p&gt;Text in a paragraph&lt;/p&gt;&lt;/div&gt;
+&lt;div style="overflow: hidden;"&gt;&lt;p&gt;Text in a paragraph&lt;/p&gt;&lt;/div&gt;</pre>
+         <div class="bfcDiv"><p class="bfcP">Text in a paragraph</p></div>
+         <div class="bfcDiv"><p class="bfcP">Text in a paragraph</p></div>
+         <div class="bfcDiv" style="overflow: hidden;">
+            <p class="bfcP" style="margin: 20px 0">Text in a paragraph</p>
+         </div>
+         <div class="source">
+            Further Reading: <a href="http://www.tjkdesign.com/articles/block-formatting-contexts_and_hasLayout.asp">
+            Block Formatting Contexts
+            </a>
+         </div>
+      </article>
+
+      <!-- Block Formatting Contexts Contain Floats -->
+      <article>
+         <h3>Block Formatting Contexts</h3>
+         <p>
+            A block formatting context will expand its footprint to fully contain a float.
+         </p>
+         <pre>
+&lt;style&gt;
+   p { padding: 20px; float: left; }
+   div { background-color: lightblue; }
+&lt;/style&gt;
+&lt;div&gt;&lt;p&gt;Text in a paragraph&lt;/p&gt;&lt;/div&gt;
+&lt;div style="overflow: hidden;"&gt;&lt;p&gt;Text in a paragraph&lt;/p&gt;&lt;/div&gt;</pre>
+         <div class="bfc-floated-parent-div box-container">
+            <p class="bfc-floated-p">Text in a paragraph</p>
+         </div>
+         <div class="bfc-floated-parent-div box-container" style="overflow: hidden; clear: left;">
+            <p class="bfc-floated-p">Text in a paragraph</p>
+         </div>
+         <div class="source">
+            Further Reading:
+            <a href="http://www.css-101.org/block-formatting-contexts/index.php">
+               Block Formatting Contexts
+            </a>
+         </div>
+      </article>
+
+      <!--Block Formatting Contexts Do Not Overlap Floats -->
+      <article>
+         <h3>Block Formatting Contexts</h3>
+         <p>
+            The border box of a block formatting context cannot overlap the margin box of the containing
+            block formatting context.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: left;"&gt;Floated left&lt;/div&gt;
+   &lt;div style="border: 10px solid green;"&gt;In-flow&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div>
+            <div class="box box1" style="float: left;">Floated Left</div>
+            <div class="box box3" style="border-width: 10px;">In-flow</div>
+         </div>
+         <p>
+            Now, let's make the in-flow box a new block formatting context by setting
+            <code>overflow: hidden</code>
+         </p>
+         <div class="exampleSpacing">
+            <div class="box box1" style="float: left;">Floated Left</div>
+            <div class="box box3" style="border-width: 10px; overflow: hidden;">In-flow</div>
+         </div>
+         <div class="source">
+            Source:
+            <a href="http://www.tjkdesign.com/articles/block-formatting-contexts_and_hasLayout.asp">
+               Block Formatting Contexts
+            </a>
+         </div>
+      </article>
+
+      <article>
+         <h3>Centering Elements</h3>
+         <p>
+
+         </p>
+      </article>
+
       <!-- Segue to Colors, Shadows, and Gradients -->
-      <article style="background-image: -webkit-linear-gradient(top, greenyellow, green);">
-         <h2 style="text-shadow: 3px 1px 4px #202020;">Colors, Shadows, Gradients</h2>
+      <article class="colorSegue">
+         <h2 class="colorTitle">Colors, Shadows, Gradients</h2>
       </article>
 
       <!-- Colors -->
