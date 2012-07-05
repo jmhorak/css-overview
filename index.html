@@ -12,6 +12,18 @@
   URL: http://code.google.com/p/html5slides/
 -->
 
+<<<<<<< HEAD
+=======
+<!--
+   Getting Started with CSS
+
+   Author: Jeff Horak
+   July 2012
+
+   URL: http://jmhorak.github.com/css-overview
+-->
+
+>>>>>>> master
 <html xmlns="http://www.w3.org/1999/html">
   <head>
     <title>Getting Started with CSS</title>
@@ -63,8 +75,25 @@
        color: orangered;
     }
 
+<<<<<<< HEAD
     .fell-English {
        font-family: 'IM Fell English SC', serif;
+=======
+    article.smaller div {
+       font-size: 20px;
+       line-height: 24px;
+       letter-spacing: 0;
+    }
+
+    .fell-English {
+       font-family: 'IM Fell English SC', serif;
+       text-rendering: optimizeLegibility;
+       letter-spacing: 2px;
+    }
+
+    .exampleSpacing {
+       margin-top: 20px;
+>>>>>>> master
     }
 
     .text-demo-box {
@@ -75,6 +104,7 @@
        font-size: 20px;
     }
 
+<<<<<<< HEAD
     .animateBackground {
        background-repeat: no-repeat;
        background-size: 900px 1900px;
@@ -86,6 +116,8 @@
        background-position: 0 -900px;
     }
 
+=======
+>>>>>>> master
     .segue {
        background-image: -webkit-linear-gradient(bottom, lightgray, white 50%);
        background-image:    -moz-linear-gradient(bottom, lightgray, white 50%);
@@ -94,27 +126,107 @@
        background-image:         linear-gradient(bottom, lightgray, white 50%);
     }
 
+<<<<<<< HEAD
+=======
+    .colorSegue {
+       background-image: -webkit-linear-gradient(top, greenyellow, green);
+       background-image:    -moz-linear-gradient(top, greenyellow, green);
+       background-image:     -ms-linear-gradient(top, greenyellow, green);
+       background-image:      -o-linear-gradient(top, greenyellow, green);
+       background-image:         linear-gradient(top, greenyellow, green);
+    }
+
+    .colorTitle {
+       background-color: rgba(255, 255, 255, 0.2);
+       text-shadow: 3px 1px 4px #202020;
+       width: 100%;
+       right: 0;
+       text-indent: 40px;
+       padding-right: 0;
+    }
+
+>>>>>>> master
     .collapseMargin {
        margin-top: 20px;
        margin-bottom: 10px;
        outline: 1px solid red;
     }
+<<<<<<< HEAD
     
+=======
+
+    .box {
+       border: 3px solid gray;
+    }
+
+    .box1 {
+       background-color: yellow;
+       border-color: orangered;
+    }
+
+    .box2 {
+       background-color: lightblue;
+    }
+
+    .box3 {
+       background-color: #90ee90;
+       border-color: green;
+    }
+
+    .box-container {
+       outline: 1px dashed gray;
+    }
+
+    .bfcDiv {
+       background-color: orangered;
+    }
+
+    .bfcP {
+       margin: 20px 0;
+       background-color: yellow;
+    }
+
+    .bfc-floated-p {
+       padding: 20px; float: left;
+    }
+
+    .bfc-floated-parent-div {
+       background-color: lightblue;
+    }
+
+    #performanceResults {
+       width: 778px;
+       height: 300px;
+    }
+
+    #performanceDataTable {
+       font-size: 16px;
+       line-height: 1.1em;
+    }
+
+>>>>>>> master
   </style>
 
   <body style='display: none'>
 
     <section class='slides layout-regular'>
+<<<<<<< HEAD
       
       <!-- Your slides (<article>s) go here. Delete or comment out the
            slides below. -->
+=======
+>>>>>>> master
 
       <!-- Title -->
       <article class="segue">
          <h1>
             Getting Started with CSS
          </h1>
+<<<<<<< HEAD
          <p>Jeff Horak<br>June xx, 2012</p>
+=======
+         <p>Jeff Horak<br>July 5, 2012</p>
+>>>>>>> master
       </article>
 
       <!-- Agenda -->
@@ -123,7 +235,10 @@
             Agenda
          </h3>
          <ul>
+<<<<<<< HEAD
             <li>Why Learn CSS</li>
+=======
+>>>>>>> master
             <li>Browser Basics and Tooling</li>
             <li>Selectors</li>
             <li>Units of Measurement</li>
@@ -136,6 +251,7 @@
          </ul>
       </article>
 
+<<<<<<< HEAD
       <!-- Why Learn CSS? -->
       <article>
          <h3>
@@ -146,6 +262,8 @@
          </p>
       </article>
 
+=======
+>>>>>>> master
       <!-- Segue to Browser Basics -->
       <article class="segue">
          <h2>Browser Basics</h2>
@@ -590,7 +708,13 @@ div { background-color: #202020; }</pre>
                   User Agent
                </td>
                <td>
+<<<<<<< HEAD
                   The default stylesheet for the device rendering the output. This is usually a web browser but may be a phone, TV, or <a href="http://media.photobucket.com/image/webos%20toaster/g_manq/webOSToaster.jpg">household appliance</a>
+=======
+                  The default stylesheet for the device rendering the output. This is usually a web
+                  browser but may be a phone, TV, or
+                  <a href="http://media.photobucket.com/image/webos%20toaster/g_manq/webOSToaster.jpg">household appliance</a>
+>>>>>>> master
                </td>
             </tr>
             <tr>
@@ -598,7 +722,13 @@ div { background-color: #202020; }</pre>
                   User Stylesheet
                </td>
                <td>
+<<<<<<< HEAD
                   Most desktop browsers allow users to provide their own <a href="https://twitter.com/paul_irish/status/217303604254613504">custom defaults</a> in the user stylesheet.
+=======
+                  Most desktop browsers allow users to provide their own
+                  <a href="https://twitter.com/paul_irish/status/217303604254613504">custom defaults</a>
+                  in the user stylesheet.
+>>>>>>> master
                </td>
             </tr>
             <tr>
@@ -606,7 +736,12 @@ div { background-color: #202020; }</pre>
                   Author Stylesheet
                </td>
                <td>
+<<<<<<< HEAD
                   Any rule imported via a <code>link</code> or <code>style</code> element or in an element's <code>style</code> attribute.
+=======
+                  Any rule imported via a <code>link</code> or <code>style</code> element or in an
+                  element's <code>style</code> attribute.
+>>>>>>> master
                </td>
             </tr>
          </table>
@@ -863,9 +998,15 @@ div { background-color: #202020; }</pre>
 div {
   height: 50px;
   width: 300px;
+<<<<<<< HEAD
   background-color: #ADFF2F;
   padding: 45px;
   border: 45px solid #ADD8E6;
+=======
+  background-color: #ADFF2F; /* greenyellow */
+  padding: 45px;
+  border: 45px solid #ADD8E6; /* lightblue */
+>>>>>>> master
   margin: 45px;
 }</pre>
          <div class="source">
@@ -883,6 +1024,7 @@ div {
          <p>
             Block-level elements are displayed vertically stacked starting at the top.
          </p>
+<<<<<<< HEAD
          <div style="margin-top: 20px; background-color: yellow; border: 3px solid orangered;">
             Block 1
          </div>
@@ -891,6 +1033,12 @@ div {
          </div>
          <div style="background-color: #90ee90; border: 3px solid green;">
             Block 3
+=======
+         <div class="exampleSpacing box-container">
+            <div class="box box1">Block 1</div>
+            <div class="box box2">Block 2</div>
+            <div class="box box3">Block 3</div>
+>>>>>>> master
          </div>
          <div class="source">
             Further Reading: <a href="https://developer.mozilla.org/En/HTML/Block-level_elements">Block-Level Elements</a>
@@ -908,7 +1056,11 @@ div {
             <li>Blocks expand to use all available horizontal space</li>
             <li>Blocks expand vertically to fully contain in-flow child elements as part of their footprint.</li>
             <li>Blocks create a new block-formatting context (more on this later)</li> <!-- TODO link -->
+<<<<<<< HEAD
             <li>The top and bottom margins between block elements collapse</li>
+=======
+            <li>Collapsing Margins</li> <!-- TODO link -->
+>>>>>>> master
          </ul>
       </article>
 
@@ -943,11 +1095,19 @@ div {
          <p>
             Normal flow inline boxes are arranged horizontally within the layout of the surrounding elements.
          </p>
+<<<<<<< HEAD
          <div style="margin-top: 20px;">
             Text before
             <span style="background-color: yellow; border: 3px solid orangered;">Inline 1</span>
             <span style="background-color: lightblue; border: 3px solid gray;">Inline 2</span>
             <span style="background-color: #90ee90; border: 3px solid green;">Inline 3</span>
+=======
+         <div class="exampleSpacing" style="padding: 10px; border: 1px dashed purple;">
+            Text before
+            <span class="box box1">Inline 1</span>
+            <span class="box box2">Inline 2</span>
+            <span class="box box3">Inline 3</span>
+>>>>>>> master
             more text after.
          </div>
          <div class="source">
@@ -955,6 +1115,114 @@ div {
          </div>
       </article>
 
+<<<<<<< HEAD
+=======
+      <!-- Inline Box Spacing -->
+      <article>
+         <h3>Inline Box Spacing</h3>
+         <p>
+            The spaces and newlines in the mark-up are reflected as spacing between inline elements.
+         </p>
+         <pre>
+&lt;span class="inline-box1"&gt;Inline 1&lt;/span&gt;
+&lt;span class="inline-box2"&gt;Inline 2&lt;/span&gt;
+&lt;span class="inline-box3"&gt;Inline 3&lt;/span&gt;</pre>
+         <p class="box-container">
+            <span class="box box1">Inline 1</span>
+            <span class="box box2">Inline 2</span>
+            <span class="box box3">Inline 3</span>
+         </p>
+         <pre>&lt;span
+   class="inline-box1"&gt;Inline 1&lt;/span&gt;&lt;span
+   class="inline-box2"&gt;Inline 2&lt;/span&gt;&lt;span
+   class="inline-box3"&gt;Inline 3&lt;/span&gt;</pre>
+         <p class="box-container">
+            <span
+                 class="box box1">Inline 1</span><span
+                 class="box box2">Inline 2</span><span
+                 class="box box3">Inline 3</span>
+         </p>
+      </article>
+
+      <!-- Vertical Padding, Border, Margin -->
+      <article>
+         <h3>Inline Boxes and Vertical Padding, Border, Margin</h3>
+         <p>
+            Vertical <code>padding</code>, <code>border</code>, and <code>margin</code>s do not influence the flow.
+         </p>
+         <p>
+            These properties are applied at the top and bottom of the element's content-box rather
+            than the line-height.
+         </p>
+         <pre>
+&lt;span class="box1"&gt;Inline 1&lt;/span&gt;
+&lt;span class="box2" style="padding: 30px; border: 30px solid purple;"&gt;
+   Inline 2
+&lt;/span&gt;</pre>
+         <p class="box-container" style="margin-top: 70px">
+            <span class="box box1">Inline 1</span>
+            <span class="box box2" style="padding: 30px; border: 30px solid purple;">Inline 2</span>
+         </p>
+      </article>
+
+      <!-- Sizing Inline Boxes -->
+      <article class="smaller">
+         <h3>Sizing Inline Boxes</h3>
+         <pre>
+&lt;span class="box1"&gt;Inline 1&lt;/span&gt;
+&lt;span class="box2" style="line-height: 100px; border: 10px solid purple;"&gt;
+   Inline 2
+&lt;/span&gt;</pre>
+         <p class="box-container">
+            <span class="box box1">Inline 1</span>
+            <span class="box box2" style="line-height: 100px; border: 30px solid purple;">Inline 2</span>
+            Use line-height to size a span
+         </p>
+         <pre>
+&lt;span class="box1" style="height: 1000px; width: 1000px;"&gt;Inline 1&lt;/span&gt;</pre>
+         <p class="box-container">
+            <span class="box box1" style="height: 1000px; width: 1000px;">Inline 1</span>
+            Height and width are ignored
+         </p>
+         <pre>
+&lt;span class="box1" style="line-height: 0;"&gt;Inline 1&lt;/span&gt;
+</pre>
+         <p class="box-container">
+            <span class="box box1" style="line-height: 0">Inline 1</span>
+         </p>
+         <p>
+            Inline elements size down to the minimum height to display the content box.
+         </p>
+      </article>
+
+      <!-- Inline Block -->
+      <article class="smaller">
+         <h3><code>display: inline-block</code></h3>
+         <p>
+            Inline-block boxes generate a block box that is flowed with surrounding content as if it
+            were an inline box.
+         </p>
+         <pre>
+&lt;span class="box1" style="display: inline-block;
+                          height: 70px;
+                          width: 70px;"&gt;Inline 1&lt;/span&gt;</pre>
+         <p class="box-container">
+            <span class="box box1" style="display: inline-block; height: 70px; font-size: 1.2em; width: 70px;">Inline 2</span>
+         </p>
+         <p>
+            Since the content is a block, you can apply <code>height</code>, <code>width</code>, and
+            vertical <code>margin</code>s.
+         </p>
+         <pre>
+&lt;span class="box1" style="display: inline-block;
+                          border: 30px solid purple;"&gt;Inline 1&lt;/span&gt;</pre>
+         <p class="box-container">
+            <span class="box box1" style="display: inline-block; border: 30px solid purple;">Inline 1</span>
+            Border included in the flow.
+         </p>
+      </article>
+
+>>>>>>> master
       <!-- Flow -->
       <article>
          <h3>Flow</h3>
@@ -962,8 +1230,13 @@ div {
             Elements on the page are rendered as either:
          </p>
          <ul>
+<<<<<<< HEAD
             <li>In-Flow (Normal Flow)</li>
             <li>Out-of-Flow (Positioned)</li>
+=======
+            <li>In-Flow (aka Normal Flow, Non-Replaced)</li>
+            <li>Out-of-Flow (aka Positioned, Replaced)</li>
+>>>>>>> master
             <li>Floated</li>
          </ul>
          <p>
@@ -972,6 +1245,7 @@ div {
          </p>
       </article>
 
+<<<<<<< HEAD
       <!-- In-Flow -->
       <article>
          <h3>In-Flow</h3>
@@ -1006,6 +1280,449 @@ div {
       <!-- Segue to Colors, Shadows, and Gradients -->
       <article style="background-image: -webkit-linear-gradient(top, greenyellow, green);">
          <h2 style="text-shadow: 3px 1px 4px #202020;">Colors, Shadows, Gradients</h2>
+=======
+      <article>
+         <h3>In-Flow</h3>
+         <p>
+            An in-flow layout positions elements adjacent to one another as either a block or inline element.
+         </p>
+         <p>
+            Block elements contain their in-flow children. These make up the block's footprint and determine
+            its size (if none is otherwise specified).
+         </p>
+      </article>
+
+      <!-- In-Flow Static-->
+      <article>
+         <h3><code>position:static</code></h3>
+         <p>
+            Normal flow static <code>block</code> elements are positioned vertically one after the other
+            starting in the upper left.
+         </p>
+         <div class="exampleSpacing box-container">
+            <div class="box box1">Block 1</div>
+            <div class="box box2">Block 2</div>
+            <div class="box box3">Block 3</div>
+         </div>
+         <p>
+            Normal flow static <code>inline</code> elements are positioned horizontally one after another.
+         </p>
+         <div class="exampleSpacing box-container">
+            <span class="box box1">Inline 1</span>
+            <span class="box box2">Inline 2</span>
+            <span class="box box3">Inline 3</span>
+         </div>
+         <p>
+            <code>left</code>, <code>right</code>, <code>top</code>, and <code>bottom</code> have no effect
+            on statically positioned elements.
+         </p>
+      </article>
+
+      <!-- In-Flow Relative Position -->
+      <article>
+         <h3><code>position: relative</code></h3>
+         <p>
+            Relatively positioned items are drawn normally in the layout and then shifted by some amount.
+            This leaves a hole in the layout where they normally would have been with <code>position: static</code>.
+         </p>
+         <pre>
+&lt;span class="box1"&gt;Inline 1&lt;/span&gt;
+&lt;span class="box2" style="position:relative; left:20px; top:20px;"&gt;
+  Inline 2
+&lt;/span&gt;
+&lt;span class="box3"&gt;Inline 3&lt;/span&gt;</pre>
+         <p class="box-container">
+            <span class="box box1">Inline 1</span>
+            <span class="box box2" style="position: relative;left: 20px; top: 20px;">Inline 2</span>
+            <span class="box box3">Inline 3</span>
+         </p>
+         <p>
+            The <code>left</code>, <code>right</code>, <code>top</code>, and <code>bottom</code> properties
+            are used to adjust the box, but cannot be used to change its size.
+         </p>
+         <div class="source">
+            Further Reading: <a href="http://www.css-101.org/relative-positioning/index.php">Relative Positioning</a>
+         </div>
+      </article>
+
+      <!-- Out of Flow -->
+      <article>
+         <h3>Out-of-Flow</h3>
+         <p>
+            Out-of-flow elements do not any space allocated for them in the layout. Instead, these elements
+            are placed relative to its closest positioned ancestor or the containing block.
+         </p>
+         <p>
+            Since space is not allocated for these elements, they are not included in the footprint
+            of an ancestor block element.
+         </p>
+         <p>
+            The margins on out-of-flow elements do not collapse.
+         </p>
+         <p>
+            The <code>left</code>, <code>right</code>, <code>top</code>, and <code>bottom</code> properties
+            are used to adjust the box, but can also be used to change its size.
+         </p>
+      </article>
+
+      <!-- Out-of-flow with Absolutely Positioned -->
+      <article class="smaller">
+         <h3><code>position: absolute</code></h3>
+         <p>
+            Absolutely positioned elements are drawn relative to an ancestor marked as
+            <code>position: relative</code> or the root element.
+         </p>
+         <pre>
+&lt;div style="position: relative; height: 250px;"&gt;
+   Relatively Positioned Element
+   &lt;div style="position: absolute; left: 25px; top: 20px;
+               bottom: 50px; right: 5px;"&gt;
+      Absolutely Positioned Element
+   &lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div class="box-container" style="position: relative; height: 130px;">
+            Relatively Positioned Element
+            <div class="box box1" style="position: absolute; left: 25px; top: 20px; bottom: 50px; right: 5px;">
+               Absolutely Positioned Element
+            </div>
+         </div>
+         <p></p>
+         <div class="box-container" style="position: relative;">
+            <div class="box box1" style="position: absolute; font-size: 0.7em; left: 25px; right: 5px;">
+               Same example without explicit height or text in relative element
+            </div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="http://www.css-101.org/absolute-positioning/index.php">Absolute Positioning</a>
+         </div>
+      </article>
+
+      <!-- Fixed Position -->
+      <article>
+         <h3><code>position: fixed</code></h3>
+         <p>
+            Fixed position elements are drawn relative to the viewport on screen-type media.
+         </p>
+         <p>
+            In print media, fixed position elements are repeated on every printed page.
+         </p>
+         <p>
+            Fixed position is a special case of absolute position.
+         </p>
+         <div class="source">
+            Further Reading: <a href="http://www.css-101.org/fixed-positioning/index.php">Fixed Positioning</a>
+         </div>
+      </article>
+
+      <!-- Floats -->
+      <article>
+         <h3>Floats</h3>
+         <p>
+            Floats are initially positioned as if they are in-flow elements.
+          </p>
+         <p>
+            Then the floated element is pushed left or right until the outer edge hits the
+            containing block's edge or another float.
+         </p>
+         <p>
+            When stacking floats if there is not enough horizontal room for the float, it wraps to
+            the next line.
+         </p>
+         <p>
+            In-flow elements within the same block formatting context are positioned around the floated
+            element.
+         </p>
+         <p>
+            In general, you should provide an explicit width on floated elements.
+         </p>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/CSS/float">Float</a>
+         </div>
+      </article>
+
+      <!-- Float Example -->
+      <article class="smaller">
+         <h3>Floating Example</h3>
+         <p>
+            The <a href="http://hipsteripsum.me">text</a> in this example wraps cleanly around floated
+            elements.
+         </p>
+         <p>
+            Also, notice how the position of the float within the mark-up effects where the float is drawn.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: right"&gt;Top-Right floated box&lt;/div&gt;
+   &lt;div style="float: left"&gt;Top-Left floated box&lt;/div&gt;
+   (Text)
+   &lt;div style="float: left"&gt;Bottom-Left floated box&lt;/div&gt;
+   &lt;div style="float: right"&gt;Bottom-Right floated box&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div class="box-container">
+            <div class="box box1" style="float: right">Top-Right floated Box</div>
+            <div class="box box1" style="float: left ">Top-Left floated Box</div>
+            Single-origin coffee truffaut banh mi umami williamsburg eiusmod, fap gastropub officia.
+            Id occupy do, retro et kogi reprehenderit culpa bushwick mlkshk keytar.
+            Williamsburg marfa narwhal, gastropub art party.
+            <div class="box box1" style="float: left">Bottom-Left floated Box</div>
+            <div class="box box1" style="float: right">Bottom-Right floated Box</div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/float">Float</a>
+         </div>
+      </article>
+
+      <!-- Block Formatting Context -->
+      <article>
+         <h3>Block Formatting Context</h3>
+         <p>
+            A block formatting context is any box that satisfiess at least one of the following:
+         </p>
+         <ul>
+            <li>The value of <code>float</code> is not <code>none</code></li>
+            <li>The value of <code>overflow</code> is not <code>visible</code></li>
+            <li>The value of <code>display</code> is <code>table-cell</code>, <code>table-caption</code>,
+                or <code>inline-block</code>
+            </li>
+            <li>The value of <code>position</code> is neither <code>static</code> nor <code>relative</code></li>
+         </ul>
+         <p>
+            It is crucial to understand block formatting contexts in order to fully understand floats.
+         </p>
+         <div class="source">
+            Source: <a href="http://www.tjkdesign.com/articles/block-formatting-contexts_and_hasLayout.asp">
+               Block Formatting Contexts
+            </a>
+         </div>
+      </article>
+
+      <!-- Block Formatting Context Prevent Margin Collasping -->
+      <article>
+         <h3>Block Formatting Contexts</h3>
+         <p>
+            Block formatting contexts prevent margin collapsing.
+         </p>
+         <pre>
+&lt;style&gt;
+   p { margin:20px 0; background-color: yellow; }
+   div { background-color: orangered; }
+&lt;/style&gt;
+&lt;div&gt;&lt;p&gt;Text in a paragraph&lt;/p&gt;&lt;/div&gt;
+&lt;div&gt;&lt;p&gt;Text in a paragraph&lt;/p&gt;&lt;/div&gt;
+&lt;div style="overflow: hidden;"&gt;&lt;p&gt;Text in a paragraph&lt;/p&gt;&lt;/div&gt;</pre>
+         <div class="bfcDiv"><p class="bfcP">Text in a paragraph</p></div>
+         <div class="bfcDiv"><p class="bfcP">Text in a paragraph</p></div>
+         <div class="bfcDiv" style="overflow: hidden;">
+            <p class="bfcP" style="margin: 20px 0">Text in a paragraph</p>
+         </div>
+         <div class="source">
+            Further Reading: <a href="http://www.tjkdesign.com/articles/block-formatting-contexts_and_hasLayout.asp">
+            Block Formatting Contexts
+            </a>
+         </div>
+      </article>
+
+      <!-- Block Formatting Contexts Contain Floats -->
+      <article>
+         <h3>Block Formatting Contexts</h3>
+         <p>
+            A block formatting context will expand its footprint to fully contain a float.
+         </p>
+         <pre>
+&lt;style&gt;
+   p { padding: 20px; float: left; }
+   div { background-color: lightblue; }
+&lt;/style&gt;
+&lt;div&gt;&lt;p&gt;Text in a paragraph&lt;/p&gt;&lt;/div&gt;
+&lt;div style="overflow: hidden;"&gt;&lt;p&gt;Text in a paragraph&lt;/p&gt;&lt;/div&gt;</pre>
+         <div class="bfc-floated-parent-div box-container">
+            <p class="bfc-floated-p">Text in a paragraph</p>
+         </div>
+         <div class="bfc-floated-parent-div box-container" style="overflow: hidden; clear: left;">
+            <p class="bfc-floated-p">Text in a paragraph</p>
+         </div>
+         <div class="source">
+            Further Reading:
+            <a href="http://www.css-101.org/block-formatting-contexts/index.php">
+               Block Formatting Contexts
+            </a>
+         </div>
+      </article>
+
+      <!--Block Formatting Contexts Do Not Overlap Floats -->
+      <article>
+         <h3>Block Formatting Contexts</h3>
+         <p>
+            The border box of a block formatting context cannot overlap the margin box of any floated
+            element in the containing block formatting context.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: left;"&gt;Floated left&lt;/div&gt;
+   &lt;div style="border: 10px solid green;"&gt;In-flow&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div>
+            <div class="box box1" style="float: left;">Floated Left</div>
+            <div class="box box3" style="border-width: 10px;">In-flow</div>
+         </div>
+         <p>
+            Now, let's make the in-flow box a new block formatting context by setting
+            <code>overflow: hidden</code>
+         </p>
+         <div class="exampleSpacing">
+            <div class="box box1" style="float: left;">Floated Left</div>
+            <div class="box box3" style="border-width: 10px; overflow: hidden;">In-flow</div>
+         </div>
+         <div class="source">
+            Source:
+            <a href="http://www.tjkdesign.com/articles/block-formatting-contexts_and_hasLayout.asp">
+               Block Formatting Contexts
+            </a>
+         </div>
+      </article>
+
+      <!-- Sizing with Floats -->
+      <article class="smaller">
+         <h3>Sizing with Floats</h3>
+         <p>
+            Floats that are longer than the containing block's footprint can cause layout issues.
+         </p>
+         <div class="box-container exampleSpacing">
+            <div class="box box1" style="float: left; width: 33%;">
+               Direct trade flexitarian ennui mixtape occaecat, cliche sint umami photo booth.
+            </div>
+            Typewriter wes anderson twee.
+         </div>
+         <div style="float: left; margin-top: 30px;">
+            <p>
+               Fix this by creating a new block formatting context. For example, use <code>overflow: hidden</code>.
+            </p>
+            <div class="box-container exampleSpacing" style="overflow: hidden; height: auto;">
+               <div class="box box1" style="float: left; width: 33%;">
+                  +1 wolf mixtape, proident sriracha odio banksy sapiente cosby sweater raw denim eu.
+               </div>
+               Kale chips brooklyn enim, banh mi eu pop-up 3 wolf moon.
+            </div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/float">Float</a>
+         </div>
+      </article>
+
+      <!-- In-Flow Element Margins and Floats  -->
+      <article class="smaller">
+         <h3>In-Flow Element Boxes and Floats</h3>
+         <p>
+            Adding a margin to the in-flow element does not work as you might expect with floated elements.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
+   &lt;div style="margin-left: 20px;"&gt;In-flow&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div class="exampleSpacing box-container" style="overflow: hidden;">
+            <div class="box box1" style="float: left; padding: 4px;">Floated Left</div>
+            <div class="box box3" style="margin-left: 20px;">In-flow</div>
+         </div>
+         <p>
+            In this example, a 20px left margin has been applied but the third box is still up against
+            the float.
+         </p>
+         <p>
+            This example shows what's going on.
+         </p>
+         <pre style="margin-top: 20px">
+&lt;div style="margin-left: 20px; border-width: 15px;"&gt;In-flow&lt;/div&gt;</pre>
+         <div class="exampleSpacing box-container" style="overflow: hidden;">
+            <div class="box box1" style="float: left; padding: 4px;">Floated Left</div>
+            <div class="box box3" style="margin-left: 20px; border-width: 15px">In-flow</div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="http://www.css-101.org/float/01.php">Floats</a>
+         </div>
+      </article>
+
+      <!-- Clearing a Float -->
+      <article class="smaller">
+         <h3>Clearing Floats</h3>
+         <p>
+            The clear property indicates which sides of element's box may not be adjacent to an
+            earlier floating box.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
+   &lt;div style="float: right; height: 60px;"&gt;Floated right&lt;/div&gt;
+   &lt;div style="clear: left"&gt;In-flow&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div class="box-container">
+            <div class="box box1" style="float: left;">Floated left</div>
+            <div class="box box2" style="float: right; height: 60px;">Floated right</div>
+            <div class="box box3" style="clear: left;">In-flow</div>
+         </div>
+         <p>
+            The last <code>div</code> clears the left side. The left floated <code>div</code> is moved
+            to above the in-flow element.
+         </p>
+         <div class="source">
+            Further Reading: <a href="http://www.w3.org/wiki/CSS/Properties/clear">Clear</a>
+         </div>
+      </article>
+
+      <!-- Clear with Block Formatting Contexts -->
+      <article class="smaller">
+         <h3>Clear and Block Formatting Contexts</h3>
+         <p>
+            <code>clear</code> is applied to all floats in a block formatting context.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
+   &lt;div id="myBlock"&gt;
+      &lt;div style="float: left;"&gt;Also Floated Left&lt;/div&gt;
+      &lt;p style="clear: left;"&gt;Text in an in-flow paragraph&lt;/p&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+         </pre>
+         <div class="exampleSpacing box-container">
+            <div class="box box1" style="float: left;">Floated left</div>
+            <div class="box box2">
+               <div class="box box3" style="float: left;">Also Floated Left</div>
+               <p style="clear: left;">Text in an in-flow paragraph</p>
+            </div>
+         </div>
+         <p>
+            Now change <code>#myBlock</code> to be a block formatting context.
+         </p>
+         <div class="exampleSpacing box-container">
+            <div class="box box1" style="float: left;">Floated left</div>
+            <div class="box box2" style="overflow: hidden;">
+               <div class="box box3" style="float: left;">Also Floated Left</div>
+               <p style="clear: left;">Text in an in-flow paragraph</p>
+            </div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/clear">Clear</a>
+         </div>
+      </article>
+
+      <article>
+         <h3>JavaScript Functions for Measuring Layout Values</h3>
+         <p>
+            <img style="height: 525px;" class="centered" src="http://i.msdn.microsoft.com/dynimg/IC504971.gif">
+         </p>
+         <div class="source">
+            Source:
+            <a href="http://msdn.microsoft.com/en-us/library/ms530302(VS.85).aspx">
+               Measuring Element Dimension and Location with CSS Object Model
+            </a>
+         </div>
+      </article>
+
+      <!-- Segue to Colors, Shadows, and Gradients -->
+      <article class="colorSegue">
+         <h2 class="colorTitle">Colors, Shadows, Gradients</h2>
+>>>>>>> master
       </article>
 
       <!-- Colors -->
@@ -1316,6 +2033,165 @@ h5 { color: hsl(140, 34, 128); }</pre>
          </p>
       </article>
 
+<<<<<<< HEAD
+=======
+      <!-- Font Fancy -->
+      <article>
+         <h3>Font Fancy</h3>
+         <p>
+            CSS allows control over how the user agent renders text above and beyond the standard
+            left/right/middle align, justify, etc.
+         </p>
+         <ul>
+            <li>
+               <code>letter-spacing</code> and <code>word-spacing</code>
+            </li>
+            <li>
+               <code>font-variant</code>
+            </li>
+            <li>
+               <code>text-transform</code>
+            </li>
+            <li>
+               <code>text-rendering</code>
+            </li>
+         </ul>
+      </article>
+
+      <!-- Font Fancy - Letter Spacing -->
+      <article>
+         <h3>Letter Spacing</h3>
+         <p>
+            Use letter spacing to control the amount of space to include between letters
+            <em>beyond the default</em>.
+         </p>
+         <pre>
+&lt;p&gt;Lo-fi 8-bit sartorial viral keytar.&lt;/p&gt;
+&lt;p style="letter-spacing: -2px;&gt;
+   Lo-fi 8-bit sartorial viral keytar.
+&lt;/p&gt;
+&lt;p style="letter-spacing: 1.1em;&gt;
+   Lo-fi 8-bit sartorial viral keytar.
+&lt;/p&gt;</pre>
+         <p style="margin-top: 0">Lo-fi 8-bit sartorial viral keytar.</p>
+         <p style="letter-spacing: -2px; margin-top: 0">Lo-fi 8-bit sartorial viral keytar.</p>
+         <p style="letter-spacing: 1.1em; margin-top: 0">Lo-fi 8-bit sartorial viral keytar.</p>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/CSS/letter-spacing">Letter Spacing</a>
+         </div>
+      </article>
+
+      <!-- Font Fancy - Word Spacing -->
+      <article>
+         <h3>Word Spacing</h3>
+         <p>
+            Similar to letter spacing, <code>word-spacing</code> specifies the amount of space between
+            words.
+         </p>
+         <pre style="margin-bottom: 20px">
+&lt;p style="word-spacing: normal;"&gt;
+   Thundercats, you probably haven't heard of them.
+&lt;/p&gt;
+&lt;p style="word-spacing: -4px;"&gt;
+   Thundercats, you probably haven't heard of them.
+&lt;/p&gt;
+&lt;p style="word-spacing: 1.1em;"&gt;
+   Thundercats, you probably haven't heard of them
+&lt;/p&gt;</pre>
+         <p style="word-spacing: normal; margin-top: 0">Thundercats, you probably haven't heard of them.</p>
+         <p style="word-spacing: -4px; margin-top: 0">Thundercats, you probably haven't heard of them.</p>
+         <p style="word-spacing: 1.1em; margin-top: 0">Thundercats, you probably haven't heard of them.</p>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/CSS/word-spacing">Word Spacing</a>
+         </div>
+      </article>
+
+      <article>
+         <h3>Font Variant</h3>
+         <p>
+            Some fonts have different variants built-in.
+         </p>
+         <p>
+            There are lots and lots of <code>font-variant</code>s defined in the CSS3 spec.
+         </p>
+         <p>
+            The most well-known and commonly used is <code>small-caps</code>.
+         </p>
+         <pre>
+&lt;p style="font-variant: normal;"&gt;
+   Post-ironic pickled stumptown letterpress mumblecore.
+&lt;/p&gt;
+&lt;p style="font-variant: small-caps;"&gt;
+   Post-ironic pickled stumptown letterpress mumblecore.
+&lt;/p&gt;</pre>
+         <p style="font-variant: normal; margin-top: 0">
+            Post-ironic pickled stumptown letterpress mumblecore.
+         </p>
+         <p style="font-variant: small-caps; margin-top: 0">
+            Post-ironic pickled stumptown letterpress mumblecore.
+         </p>
+         <div class="source">
+            Source: <a href="http://dev.w3.org/csswg/css3-fonts/#font-rend-desc">font-variant</a>
+         </div>
+      </article>
+
+      <!-- Font Fancy - Text Transform -->
+      <article>
+         <h3>Text Transform</h3>
+         <p>
+            The <code>text-transform</code> rule can control the capitalization of text.
+         </p>
+         <pre>
+&lt;p style="text-transform: capitalize;"&gt;
+   Viral PBR stumptown photo booth kale chips.
+&lt;/p&gt;
+&lt;p style="text-transform: uppercase;"&gt;
+   Viral PBR stumptown photo booth kale chips.
+&lt;/p&gt;
+&lt;p style="text-transform: lowercase;"&gt;
+   Viral PBR stumptown photo booth kale chips.
+&lt;/p&gt;</pre>
+         <p style="margin-top: 0; text-transform: capitalize;">
+            Viral PBR stumptown photo booth kale chips.
+         </p>
+         <p style="margin-top: 0; text-transform: uppercase;">
+            Viral PBR stumptown photo booth kale chips.
+         </p>
+         <p style="margin-top: 0; text-transform: lowercase;">
+            Viral PBR stumptown photo booth kale chips.
+         </p>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/CSS/text-transform">text-transform</a>
+         </div>
+      </article>
+
+      <!-- Font Fancy - Text Rendering -->
+      <article>
+         <h3>Text Rendering</h3>
+         <p>
+            The <code>text-rendering</code> option provides hints to the CSS rendering engine on how
+            to render text.
+         </p>
+         <p>
+            Text rendering is an in-exact science. Trade-offs are made at run-time between rendering
+            speed and glyph legibility.
+         </p>
+         <pre>
+&lt;p style="text-rendering: optimizeSpeed;"&gt;WAR ff fi fl ffl&lt;/p&gt;
+&lt;p style="text-rendering: optimizeLegibility;"&gt;WAR ff fi fl ffl&lt;/p&gt;
+         </pre>
+         <p style="font: 50px 'Dejavu Serif',Constantia, serif; text-rendering: optimizeSpeed; letter-spacing: 1px;">
+            WAR ff fi fl ffl
+         </p>
+         <p style="font: 50px 'Dejavu Serif',Constantia, serif; text-rendering: optimizeLegibility; letter-spacing: 1px; margin-top: 0;">
+            WAR ff fi fl ffl
+         </p>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/CSS/text-rendering">text-rendering</a>
+         </div>
+      </article>
+
+>>>>>>> master
       <!-- Web Fonts -->
       <article class="smaller">
          <h3>Web Fonts</h3>
@@ -1381,11 +2257,14 @@ h5 { color: hsl(140, 34, 128); }</pre>
          </div>
       </article>
 
+<<<<<<< HEAD
       <!--<article class="animateBackground" style="-webkit-transition-property: background-position;
              -webkit-transition-duration: 250ms;">
          <h2>Hover over this</h2>
       </article> -->
 
+=======
+>>>>>>> master
       <!-- Elided Text -->
       <article class="smaller">
          <h3>Elided Text</h3>
@@ -1871,7 +2750,45 @@ $('#item1').css('width', val1 + 10); // Write
 $('#item2').css('width', val2 + 20); // Write
 $('#item3').css('width', val3 + 30); // Write</pre>
          <div class="source">
+<<<<<<< HEAD
             Further Reading: <a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">Rendering: repaint, reflow/relayout, restyle</a>
+=======
+            Further Reading: <a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">Rendering: repaint, reflow/relayout, restyle</a>,
+            <a href="http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-performance-making-your-javascript-slow/">
+               Reflows & Repaints: CSS Performance making your JavaScript slow?
+            </a>
+         </div>
+      </article>
+
+      <article class="smaller">
+         <h3>Hide Elements with Visibility</h3>
+         <p>
+            The <code>visibility: hidden</code> rule works very similarly to <code>display: none</code>.
+         </p>
+         <p>
+            Both hide an element.
+         </p>
+         <p>
+            The difference is that elements set with <code>visibility: hidden</code> do not reliquish
+            the space in the layout.
+         </p>
+         <p>
+            This means no reflow is necessary to remove the element. Just a repaint.
+         </p>
+         <pre>
+&lt;span&gt;
+   Hidden text: &lt;span style="display: none;"&gt;Some hidden text&lt;/span&gt;
+   Invisible text: &lt;span style="visibility: hidden;"&gt;Some invisible text&lt;/span&gt;
+&lt;/span&gt;</pre>
+         <p>
+            <span class="box-container">
+               Hidden text: <span style="display: none;">Some hidden text</span>
+               Invisible text: <span style="visibility: hidden;">Some invisible text</span>
+            </span>
+         </p>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/visibility">Visibility</a>
+>>>>>>> master
          </div>
       </article>
 
@@ -2014,6 +2931,10 @@ div.myClass div div [type=text] {
 
       <article class="smaller">
          <h3>Selector Style Performance Results</h3>
+<<<<<<< HEAD
+=======
+         <div id="performanceResults"></div>
+>>>>>>> master
          <table id="performanceDataTable">
             <thead>
             <tr>
@@ -2080,6 +3001,7 @@ div.myClass div div [type=text] {
             </tr>
             </tbody>
          </table>
+<<<<<<< HEAD
          <div id="performanceResults"></div>
          <div class="source">
             Source <a href="http://www.screwlewse.com/labs/css-performance-test.php">CSS Formatting Performance Test Page</a>
@@ -2412,6 +3334,12 @@ div.myClass div div [type=text] {
         </ul>
       </article>
 
+=======
+         <div class="source">
+            Source: <a href="http://www.screwlewse.com/labs/css-performance-test.php">CSS Formatting Performance Test Page</a>
+         </div>
+      </article>
+>>>>>>> master
     </section>
 
     <script src="js/lib/jquery-1.7.2.min.js"></script>
