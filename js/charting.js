@@ -61,8 +61,11 @@ $(document).ready(function() {
       text: 'CSS Performance'
     },
     xAxis: {
-      style: {
-        'fontSize': '25'
+      labels: {
+        style: {
+          fontSize: 16
+        },
+        y: 20
       }
     },
     yAxis: {

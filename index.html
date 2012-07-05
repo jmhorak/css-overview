@@ -23,7 +23,7 @@
 
 <html xmlns="http://www.w3.org/1999/html">
   <head>
-    <title>Getting Started with CSS</title>
+    <title>Become a CSS Pro</title>
 
     <meta charset='utf-8'>
     <script
@@ -72,7 +72,7 @@
        color: orangered;
     }
 
-    article.smaller div {
+    article.smaller div:not(.source) {
        font-size: 20px;
        line-height: 24px;
        letter-spacing: 0;
@@ -257,6 +257,7 @@
       <!-- MDN -->
       <article>
          <h3>W3Schools Alternatives</h3>
+         <img style="float: left; margin-top: 20px; margin-right: 10px;" src="img/mdn.png">
          <p>
             The <a href="https://developer.mozilla.org">Mozilla Developer Network</a> is a
             comprehensive source of documentation for JavaScript/HTML/CSS/XML/SVG and more.
@@ -337,7 +338,7 @@ MDN vertical-align</pre>
                </li>
             </ul>
          </div>
-         <div style="margin: 20px 90px; display: inline-block; vertical-align: top">
+         <div style="margin: 20px 70px; display: inline-block; vertical-align: top">
             CSS
             <code style="display: block; font-size: 20px;">span { display: none; }</code>
          </div>
@@ -652,8 +653,8 @@ MDN vertical-align</pre>
       <article>
          <h3>How Are Conflicting Styles Resolved?</h3>
          <p>The rendering engine may have multiple styles it needs to apply to a particular element.</p>
-         <pre>div { background-color: #00FF00; }
-div { background-color: #202020; }</pre>
+         <pre>div { background-color: green; }
+div { background-color: gray; }</pre>
          <div style="height: 100px; width: 600px; margin: 40px auto; position: relative">
             <div style="width: 300px; height: 100%; background-color: green; display: inline-block;">
             </div><div style="width: 300px; height: 100%; background-color: gray; display: inline-block;"></div>
@@ -701,10 +702,10 @@ div { background-color: #202020; }</pre>
       <article>
          <h3>Rule Origin</h3>
          <p>
-            The origin of a CSS rule refers to the type of stylesheet where it appeared.
+            The origin of a CSS rule refers the stylesheet where it appears.
          </p>
          <p>
-            Rules are imported from three sources
+            Rules are imported from three sources:
          </p>
          <table>
             <tr>
@@ -714,7 +715,7 @@ div { background-color: #202020; }</pre>
                <td>
                   The default stylesheet for the device rendering the output. This is usually a web
                   browser but may be a phone, TV, or
-                  <a href="http://media.photobucket.com/image/webos%20toaster/g_manq/webOSToaster.jpg">household appliance</a>
+                  <a href="http://media.photobucket.com/image/webos%20toaster/g_manq/webOSToaster.jpg">household appliance</a>.
                </td>
             </tr>
             <tr>
@@ -777,6 +778,35 @@ div { background-color: #202020; }</pre>
          </p>
          <div class="source">
             Source: <a href="http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/#Specificity">Specificity</a>
+         </div>
+      </article>
+
+      <!-- Important -->
+      <article>
+         <h3>Use of !important</h3>
+         <p>
+            The <code>!important</code> directive can override other rules with less specificity.
+         </p>
+         <p>
+            This is akin to the <a href="http://en.wikipedia.org/wiki/Nuclear_option">nuclear option</a>.
+         </p>
+         <p>
+            Treat <code>!important</code> as a code smell.
+         </p>
+      </article>
+
+      <article>
+         <h3>Order</h3>
+         <p>
+            Understanding order is simple: Last always wins.
+         </p>
+         <pre>
+&lt;div style="background-color: red;
+            background-color: lightblue;"&gt;
+   Last always wins.
+&lt;/div&gt;</pre>
+         <div style="background-color: green; background-color: lightblue; padding: 10px;">
+            Last always wins.
          </div>
       </article>
 
@@ -898,6 +928,15 @@ div { background-color: #202020; }</pre>
             Percentage values are always relative to some other value. Properties that allow
             percentages implicitly define the value to which the percentage refers.
          </p>
+         <pre>
+&lt;div style="height: 100px;"&gt;
+   &lt;div style="height: 50%; width: 50%;"&gt;
+      50% as big as the parent
+   &lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div class="box box1" style="height: 100px;">
+            <div class="box box2" style="height: 50%; width: 50%;">50% as big as the parent</div>
+         </div>
          <div class="source">
             Source: <a href="http://www.w3.org/TR/css3-values/#percentages">Percentages</a>
          </div>
@@ -939,6 +978,9 @@ div { background-color: #202020; }</pre>
                </td>
             </tr>
          </table>
+         <div class="box box1 exampleSpacing" style="width: 40vw; font-size: 20px;">
+            Viewport-relative unit supported this box is shorter than the slide width.
+         </div>
          <div class="source">
             Further Reading: <a href="http://css-tricks.com/viewport-sized-typography/">Viewport-Sized Typography</a>
          </div>
@@ -1030,8 +1072,7 @@ div {
             <li>Blocks start on a newline</li>
             <li>Blocks expand to use all available horizontal space</li>
             <li>Blocks expand vertically to fully contain in-flow child elements as part of their footprint.</li>
-            <li>Blocks create a new block-formatting context (more on this later)</li> <!-- TODO link -->
-            <li>Collapsing Margins</li> <!-- TODO link -->
+            <li>Collapsing Margins</li>
          </ul>
       </article>
 
@@ -1105,25 +1146,37 @@ div {
          </p>
       </article>
 
-      <!-- Vertical Padding, Border, Margin -->
-      <article>
-         <h3>Inline Boxes and Vertical Padding, Border, Margin</h3>
+      <!-- Inline with Padding, Border, Margin -->
+      <article class="smaller">
+         <h3>Inline Boxes and Padding, Border, Margin</h3>
          <p>
-            Vertical <code>padding</code>, <code>border</code>, and <code>margin</code>s do not influence the flow.
+            Vertical <code>padding</code>, <code>border</code>, and <code>margin</code>s do not
+            influence the flow but horizontal counter-parts do.
          </p>
          <p>
-            These properties are applied at the top and bottom of the element's content-box rather
+            Vertical properties are applied at the top and bottom of the element's content-box rather
             than the line-height.
          </p>
          <pre>
 &lt;span class="box1"&gt;Inline 1&lt;/span&gt;
-&lt;span class="box2" style="padding: 30px; border: 30px solid purple;"&gt;
+&lt;span class="box2" style="margin: 30px; padding: 30px; border: 30px solid purple;"&gt;
    Inline 2
-&lt;/span&gt;</pre>
-         <p class="box-container" style="margin-top: 70px">
-            <span class="box box1">Inline 1</span>
-            <span class="box box2" style="padding: 30px; border: 30px solid purple;">Inline 2</span>
+&lt;/span&gt;
+&lt;span class="box3"&gt;Inline 3&lt;/span&gt;</pre>
+         <p style="margin-top: 70px">
+            Previous paragraph
          </p>
+         <p class="box-container">
+            <span class="box box1">Inline 1</span>
+            <span class="box box2" style="margin: 30px; padding: 30px; border: 30px solid purple;">Inline 2</span>
+            <span class="box box3">Inline 3</span>
+         </p>
+         <p>
+            Next paragraph
+         </p>
+         <div class="source">
+            Further Reading: <a href="http://www.css-101.org/inline-level-elements/index.php">Inline Level Elements</a>
+         </div>
       </article>
 
       <!-- Sizing Inline Boxes -->
@@ -1181,6 +1234,10 @@ div {
             <span class="box box1" style="display: inline-block; border: 30px solid purple;">Inline 1</span>
             Border included in the flow.
          </p>
+         <div class="source">
+            Further Reading: <a href="http://www.css-101.org/display/index.php">Display Properties</a>,
+            <a href="https://developer.mozilla.org/en/CSS/display">Display</a>
+         </div>
       </article>
 
       <!-- Flow -->
@@ -1198,6 +1255,9 @@ div {
             The flow of an element is a combination of the <code>display</code>, <code>position</code>,
             and <code>float</code> properties.
          </p>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/Visual_formatting_model">Visual Formatting Model</a>
+         </div>
       </article>
 
       <article>
@@ -1235,6 +1295,9 @@ div {
             <code>left</code>, <code>right</code>, <code>top</code>, and <code>bottom</code> have no effect
             on statically positioned elements.
          </p>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/position">Position</a>
+         </div>
       </article>
 
       <!-- In-Flow Relative Position -->
@@ -1268,7 +1331,7 @@ div {
       <article>
          <h3>Out-of-Flow</h3>
          <p>
-            Out-of-flow elements do not any space allocated for them in the layout. Instead, these elements
+            Out-of-flow elements do not have any space allocated for them in the layout. Instead, these elements
             are placed relative to its closest positioned ancestor or the containing block.
          </p>
          <p>
@@ -1320,7 +1383,7 @@ div {
       <article>
          <h3><code>position: fixed</code></h3>
          <p>
-            Fixed position elements are drawn relative to the viewport on screen-type media.
+            Fixed position elements are drawn relative to the viewport in screen-type media.
          </p>
          <p>
             In print media, fixed position elements are repeated on every printed page.
@@ -1348,8 +1411,8 @@ div {
             the next line.
          </p>
          <p>
-            In-flow elements within the same block formatting context are positioned around the floated
-            element.
+            In-flow elements within the same <code>block formatting context</code> are positioned
+            around the floated element.
          </p>
          <p>
             In general, you should provide an explicit width on floated elements.
@@ -1388,6 +1451,39 @@ div {
          </div>
          <div class="source">
             Further Reading: <a href="https://developer.mozilla.org/en/CSS/float">Float</a>
+         </div>
+      </article>
+
+      <!-- In-Flow Element Margins and Floats  -->
+      <article class="smaller">
+         <h3>In-Flow Element Boxes and Floats</h3>
+         <p>
+            Adding a margin to the in-flow element does not work as you might expect with floated elements.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
+   &lt;div style="margin-left: 20px;"&gt;In-flow&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div class="exampleSpacing box-container" style="overflow: hidden;">
+            <div class="box box1" style="float: left; padding: 4px;">Floated Left</div>
+            <div class="box box3" style="margin-left: 20px;">In-flow</div>
+         </div>
+         <p>
+            In this example, a 20px left margin has been applied but the third box is still up against
+            the float.
+         </p>
+         <p>
+            This example shows what's going on.
+         </p>
+         <pre style="margin-top: 20px">
+&lt;div style="margin-left: 20px; border-width: 15px;"&gt;In-flow&lt;/div&gt;</pre>
+         <div class="exampleSpacing box-container" style="overflow: hidden;">
+            <div class="box box1" style="float: left; padding: 4px;">Floated Left</div>
+            <div class="box box3" style="margin-left: 20px; border-width: 15px">In-flow</div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="http://www.css-101.org/float/01.php">Floats</a>
          </div>
       </article>
 
@@ -1528,39 +1624,6 @@ div {
          </div>
       </article>
 
-      <!-- In-Flow Element Margins and Floats  -->
-      <article class="smaller">
-         <h3>In-Flow Element Boxes and Floats</h3>
-         <p>
-            Adding a margin to the in-flow element does not work as you might expect with floated elements.
-         </p>
-         <pre>
-&lt;div&gt;
-   &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
-   &lt;div style="margin-left: 20px;"&gt;In-flow&lt;/div&gt;
-&lt;/div&gt;</pre>
-         <div class="exampleSpacing box-container" style="overflow: hidden;">
-            <div class="box box1" style="float: left; padding: 4px;">Floated Left</div>
-            <div class="box box3" style="margin-left: 20px;">In-flow</div>
-         </div>
-         <p>
-            In this example, a 20px left margin has been applied but the third box is still up against
-            the float.
-         </p>
-         <p>
-            This example shows what's going on.
-         </p>
-         <pre style="margin-top: 20px">
-&lt;div style="margin-left: 20px; border-width: 15px;"&gt;In-flow&lt;/div&gt;</pre>
-         <div class="exampleSpacing box-container" style="overflow: hidden;">
-            <div class="box box1" style="float: left; padding: 4px;">Floated Left</div>
-            <div class="box box3" style="margin-left: 20px; border-width: 15px">In-flow</div>
-         </div>
-         <div class="source">
-            Further Reading: <a href="http://www.css-101.org/float/01.php">Floats</a>
-         </div>
-      </article>
-
       <!-- Clearing a Float -->
       <article class="smaller">
          <h3>Clearing Floats</h3>
@@ -1572,12 +1635,12 @@ div {
 &lt;div&gt;
    &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
    &lt;div style="float: right; height: 60px;"&gt;Floated right&lt;/div&gt;
-   &lt;div style="clear: left"&gt;In-flow&lt;/div&gt;
+   &lt;div style="clear: left; border-width: 15px;"&gt;In-flow&lt;/div&gt;
 &lt;/div&gt;</pre>
          <div class="box-container">
             <div class="box box1" style="float: left;">Floated left</div>
             <div class="box box2" style="float: right; height: 60px;">Floated right</div>
-            <div class="box box3" style="clear: left;">In-flow</div>
+            <div class="box box3" style="clear: left; border-width: 15px;">In-flow</div>
          </div>
          <p>
             The last <code>div</code> clears the left side. The left floated <code>div</code> is moved
@@ -1625,8 +1688,24 @@ div {
          </div>
       </article>
 
+      <!-- Other Topics in Layout -->
       <article>
-         <h3>JavaScript Functions for Measuring Layout Values</h3>
+         <h3>Other Topics in Layout</h3>
+         <ul>
+            <li><a href="http://www.css-101.org/z-index/index.php">z-index</a></li>
+            <li><a href="http://www.css-101.org/negative-margin/index.php">Negative margins</a></li>
+            <li>
+               <a href="http://www.w3.org/Style/Examples/007/center">Centering</a>
+               <a href="http://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/">elements</a>
+               <a href="http://www.vanseodesign.com/css/vertical-centering/">horizontally or vertically</a>
+            </li>
+            <li><a href="http://www.w3.org/TR/css3-grid/">CSS3 Grids</a></li>
+         </ul>
+      </article>
+
+      <!-- JavaScript Functions -->
+      <article>
+         <h3>Addendum - JS Functions for Measuring Layout Values</h3>
          <p>
             <img style="height: 525px;" class="centered" src="http://i.msdn.microsoft.com/dynimg/IC504971.gif">
          </p>
@@ -1941,19 +2020,19 @@ h5 { color: hsl(140, 34, 128); }</pre>
          <p style="font: 20px 'Not Available Font', sans-serif;">
             Example 2: Fallback sans-serif at 20px
          </p>
-         <pre>.example3 { font: 0.8em/1.2em 'Segoe UI', Arial, sans-serif; }</pre>
+         <pre>.example3 { font: 0.7em/1.2em 'Segoe UI', Arial, sans-serif; }</pre>
          <p style="font: 0.7em/1.2em 'Segoe UI', Arial, sans-serif;">
             Example 3: Segoe UI at 70% of the inherited size with 120% larger <code>line-height</code>
          </p>
-         <pre>.example4 { font: italic small-caps bold 0.8em/1.2em cursive; }</pre>
-         <p style="font: italic small-caps bold 0.8em/1.2em cursive;">
-            Example 4: Fallback cursive font in small-cap bold italic
+         <pre>.example4 { font: italic bold 0.8em/1.2em cursive; }</pre>
+         <p style="font: italic bold 0.8em/1.2em cursive;">
+            Example 4: Default cursive font in bold italic
          </p>
       </article>
 
-      <!-- Font Fancy -->
+      <!-- Getting Font Fancy -->
       <article>
-         <h3>Font Fancy</h3>
+         <h3>Getting Font Fancy</h3>
          <p>
             CSS allows control over how the user agent renders text above and beyond the standard
             left/right/middle align, justify, etc.
@@ -2001,8 +2080,8 @@ h5 { color: hsl(140, 34, 128); }</pre>
       <article>
          <h3>Word Spacing</h3>
          <p>
-            Similar to letter spacing, <code>word-spacing</code> specifies the amount of space between
-            words.
+            Similar to <code>letter-spacing</code>, <code>word-spacing</code> specifies the amount
+            of space between words.
          </p>
          <pre style="margin-bottom: 20px">
 &lt;p style="word-spacing: normal;"&gt;
@@ -2103,7 +2182,8 @@ h5 { color: hsl(140, 34, 128); }</pre>
             WAR ff fi fl ffl
          </p>
          <div class="source">
-            Source: <a href="https://developer.mozilla.org/en/CSS/text-rendering">text-rendering</a>
+            Source: <a href="https://developer.mozilla.org/en/CSS/text-rendering">text-rendering</a>,
+            <a href="http://en.wikipedia.org/wiki/Typographic_ligature">Typographic Ligatures</a>
          </div>
       </article>
 
@@ -2277,7 +2357,7 @@ h5 { color: hsl(140, 34, 128); }</pre>
 
       <!-- Flexbox Example -->
       <article>
-         <h3>FlexBox Example</h3>
+         <h3>Real Life Example: FlexBox Example</h3>
          <p>
             The CSS working group decided to completely rewrite the Flexible Box Model spec.
          </p>
@@ -2905,6 +2985,55 @@ div.myClass div div [type=text] {
             Source: <a href="http://www.screwlewse.com/labs/css-performance-test.php">CSS Formatting Performance Test Page</a>
          </div>
       </article>
+
+       <!-- Other Topics -->
+       <article class="segue">
+          <h2>Other Topics</h2>
+       </article>
+
+       <!-- What Wasn't Covered -->
+       <article>
+          <h3>What Wasn't Covered</h3>
+          <p>
+             For all that was covered, there are plenty of advanced topics that were not.
+          </p>
+          <ul>
+             <li>
+                <a href="http://davidwalsh.name/translate3d">Hardware Acceleration</a>
+             </li>
+             <li>
+                <a href="http://oli.jp/2010/css-animatable-properties/">CSS</a>
+                <a href="http://www.webdirections.org/blog/let-the-web-move-you-css3-animations-and-transitions/">Animation</a> and
+                <a href="https://developer.mozilla.org/en/CSS/CSS_transitions">Transitions</a>
+             </li>
+             <li>
+                <a href="http://www.w3.org/TR/css3-2d-transforms/">2-D</a> and
+                <a href="http://www.html5rocks.com/en/tutorials/3d/css/">3-D</a>
+                <a href="https://developer.mozilla.org/En/CSS/Using_CSS_transforms">Transforms</a>
+             </li>
+             <li>
+                <a href="http://www.html5rocks.com/en/tutorials/filters/understanding-css/">CSS Filters</a>
+             </li>
+             <li>
+                <a href="http://updates.html5rocks.com/2012/03/CSS-layout-gets-smarter-with-calc">calc()</a>
+             </li>
+             <li>
+                <a href="http://msdn.microsoft.com/en-us/library/ie/hh673537(v=vs.85).aspx">CSS Regions</a>
+             </li>
+             <li>
+                <a href="http://www.w3.org/TR/css3-text/#hyphenation">Text Hyphenation</a>
+             </li>
+             <li>
+                <a href="https://developer.mozilla.org/en/CSS/Pseudo-elements">Pseudo Elements</a>
+             </li>
+          </ul>
+       </article>
+
+      <!-- Fin -->
+       <article class="segue">
+          <h2>Thanks for attending!</h2>
+       </article>
+
     </section>
 
     <script src="js/lib/jquery-1.7.2.min.js"></script>
