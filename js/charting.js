@@ -5,9 +5,10 @@
  * Author: Jeff Horak
  * Date: 7/2/12
  */
-
+window.chart;
 // On document ready, call visualize on the datatable.
 $(document).ready(function() {
+
   /**
    * Visualize an HTML table using Highcharts. The top (horizontal) header
    * is used for series names, and the left (vertical) header is used
@@ -45,37 +46,48 @@ $(document).ready(function() {
 
   var table = document.getElementById('performanceDataTable'),
   options = {
-     chart: {
-        renderTo: 'performanceResults',
-        type: 'column',
-       width: 778,
-       height: 300,
-       marginLeft: 50
-     },
-     title: {
-        text: 'CSS Performance'
-     },
-     xAxis: {
-       style: {
-         'fontSize': '25'
-       }
-     },
-     yAxis: {
-        title: {
-          text: 'ms',
-          margin: 40
-        }
-     },
-    legend: {
-      floating: true
+    chart: {
+      renderTo: 'performanceResults',
+      type: 'column',
+      width: 778,
+      height: 300,
+      marginLeft: 50,
+      marginBottom: 25
     },
-     tooltip: {
-        formatter: function() {
-           return '<b>'+ this.series.name +'</b><br/>'+
-              this.y +'ms on '+ this.x;
-        }
-     }
+    credits: {
+      y: 0
+    },
+    title: {
+      text: 'CSS Performance'
+    },
+    xAxis: {
+      style: {
+        'fontSize': '25'
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'ms',
+        margin: 40
+       }
+    },
+    legend: {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'top',
+      y: 100,
+      x: 0
+    },
+    tooltip: {
+      formatter: function() {
+        return '<b>'+ this.series.name +'</b><br/>'+
+          this.y +'ms on '+ this.x;
+      }
+    }
   };
 
-  Highcharts.visualize(table, options);
+  // Defer creating the chart, lots of other JS needs to happen first
+  setTimeout(function() {
+    Highcharts.visualize(table, options);
+  }, 100);
 });

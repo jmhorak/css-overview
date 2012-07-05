@@ -72,16 +72,20 @@
        color: orangered;
     }
 
+    article.smaller div {
+       font-size: 20px;
+       line-height: 24px;
+       letter-spacing: 0;
+    }
+
     .fell-English {
        font-family: 'IM Fell English SC', serif;
+       text-rendering: optimizeLegibility;
+       letter-spacing: 2px;
     }
 
     .exampleSpacing {
        margin-top: 20px;
-    }
-
-    .smaller .exampleSpacing {
-       margin-top: 10px;
     }
 
     .text-demo-box {
@@ -90,17 +94,6 @@
        background-color: yellow;
        border: 3px solid orange;
        font-size: 20px;
-    }
-
-    .animateBackground {
-       background-repeat: no-repeat;
-       background-size: 900px 1900px;
-       background-image: -webkit-linear-gradient(bottom, green, greenyellow 950px, yellow 1650px, white 1750px);
-       background-position: 0 -1200px;
-    }
-
-    .animateBackground:hover {
-       background-position: 0 -900px;
     }
 
     .segue {
@@ -172,7 +165,17 @@
     .bfc-floated-parent-div {
        background-color: lightblue;
     }
-    
+
+    #performanceResults {
+       width: 778px;
+       height: 300px;
+    }
+
+    #performanceDataTable {
+       font-size: 16px;
+       line-height: 1.1em;
+    }
+
   </style>
 
   <body style='display: none'>
@@ -1274,8 +1277,11 @@ div {
       <article>
          <h3>Floats</h3>
          <p>
-            Floats are initially positioned as if they are in-flow elements. Then the floated elemented
-            is pushed left or right until the outer edge hits the containing block's edge or another float.
+            Floats are initially positioned as if they are in-flow elements.
+          </p>
+         <p>
+            Then the floated element is pushed left or right until the outer edge hits the
+            containing block's edge or another float.
          </p>
          <p>
             When stacking floats if there is not enough horizontal room for the float, it wraps to
@@ -1288,10 +1294,13 @@ div {
          <p>
             In general, you should provide an explicit width on floated elements.
          </p>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/CSS/float">Float</a>
+         </div>
       </article>
 
       <!-- Float Example -->
-      <article>
+      <article class="smaller">
          <h3>Floating Example</h3>
          <p>
             The <a href="http://hipsteripsum.me">text</a> in this example wraps cleanly around floated
@@ -1302,109 +1311,23 @@ div {
          </p>
          <pre>
 &lt;div&gt;
-   &lt;div style="float: right"&gt;Right floated box&lt;/div&gt;
+   &lt;div style="float: right"&gt;Top-Right floated box&lt;/div&gt;
+   &lt;div style="float: left"&gt;Top-Left floated box&lt;/div&gt;
    (Text)
-   &lt;div style="float: left"&gt;Left floated box&lt;/div&gt;
+   &lt;div style="float: left"&gt;Bottom-Left floated box&lt;/div&gt;
+   &lt;div style="float: right"&gt;Bottom-Right floated box&lt;/div&gt;
 &lt;/div&gt;</pre>
          <div class="box-container">
-            <div class="box box1" style="float: right">Right floated Box</div>
+            <div class="box box1" style="float: right">Top-Right floated Box</div>
+            <div class="box box1" style="float: left ">Top-Left floated Box</div>
             Single-origin coffee truffaut banh mi umami williamsburg eiusmod, fap gastropub officia.
             Id occupy do, retro et kogi reprehenderit culpa bushwick mlkshk keytar.
-            <div class="box box1" style="float: left">Left floated Box</div>
+            Williamsburg marfa narwhal, gastropub art party.
+            <div class="box box1" style="float: left">Bottom-Left floated Box</div>
+            <div class="box box1" style="float: right">Bottom-Right floated Box</div>
          </div>
          <div class="source">
             Further Reading: <a href="https://developer.mozilla.org/en/CSS/float">Float</a>
-         </div>
-      </article>
-
-      <!-- Sizing with Floats -->
-      <article class="smaller">
-         <h3>Sizing with Floats</h3>
-         <p>
-            Floats that are longer than the containing block's footprint can cause layout issues.
-         </p>
-         <div class="box-container exampleSpacing">
-            <div class="box box1" style="float: left; width: 33%;">Direct trade flexitarian ennui mixtape occaecat, cliche sint umami photo booth.</div>
-            Typewriter wes anderson twee.
-         </div>
-
-         <div class="box-container exampleSpacing" style="overflow: hidden;
-                                                          height: auto;
-                                                          position: absolute;
-                                                          top: 50%;
-                                                          left: 60px;
-                                                          right: 60px;">
-            <div class="box box1" style="float: left; width: 33%;"> +1 wolf mixtape, proident sriracha odio banksy sapiente cosby sweater raw denim eu.</div>
-            Kale chips brooklyn enim, banh mi eu pop-up 3 wolf moon.
-            <p>
-              Use <code>overflow: hidden;</code> to correctly size the parent.
-            </p>
-         </div>
-         <div class="source">
-            Further Reading: <a href="https://developer.mozilla.org/en/CSS/float">Float</a>
-         </div>
-      </article>
-
-      <!-- In-Flow Element Margins and Floats  -->
-      <article class="smaller">
-         <h3>In-Flow Element Boxes and Floats</h3>
-         <p>
-            Adding a margin to the in-flow element does not work as you might expect with floated elements.
-         </p>
-         <pre>
-&lt;div&gt;
-   &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
-   &lt;div style="margin-left: 20px;"&gt;In-flow&lt;/div&gt;
-&lt;/div&gt;</pre>
-         <div class="exampleSpacing box-container" style="overflow: hidden;">
-            <div class="box box1" style="float: left; padding: 4px;">Floated Left</div>
-            <div class="box box3" style="margin-left: 20px;">In-flow</div>
-         </div>
-         <p>
-            In this example, a 20px left margin has been applied but the third box is still up against
-            the float.
-         </p>
-         <p>
-            This example shows what's going on.
-         </p>
-         <pre style="margin-top: 20px">
-&lt;div style="margin-left: 20px; border-width: 15px;"&gt;In-flow&lt;/div&gt;</pre>
-         <div class="exampleSpacing box-container" style="overflow: hidden;">
-            <div class="box box1" style="float: left; padding: 4px;">Floated Left</div>
-            <div class="box box3" style="margin-left: 20px; border-width: 15px">In-flow</div>
-         </div>
-         <div class="source">
-            Further Reading: <a href="http://www.css-101.org/float/01.php">Floats</a>
-         </div>
-      </article>
-
-      <!-- Clearing a Float -->
-      <article class="smaller">
-         <h3>Clearing Floats</h3>
-         <p>
-            The clear property indicates which sides of element's box may not be adjacent to an
-            earlier floating box.
-         </p>
-         <pre>
-&lt;div&gt;
-   &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
-   &lt;div style="float: right; height: 60px;"&gt;Floated right&lt;/div&gt;
-   &lt;div style="clear: left"&gt;In-flow&lt;/div&gt;
-&lt;/div&gt;</pre>
-         <div class="box-container">
-            <div class="box box1" style="float: left;">Floated left</div>
-            <div class="box box2" style="float: right; height: 60px;">Floated right</div>
-            <div class="box box3" style="clear: left;">In-flow</div>
-         </div>
-         <p>
-            The last <code>div</code> clears the left side. The left floated <code>div</code> is moved
-            to above the in-flow element.
-         </p>
-         <p>
-            <strong>Note</strong>: Clear only operates on elements in the same block formatting context
-         </p>
-         <div class="source">
-            Further Reading: <a href="http://www.w3.org/wiki/CSS/Properties/clear">Clear</a>
          </div>
       </article>
 
@@ -1412,7 +1335,7 @@ div {
       <article>
          <h3>Block Formatting Context</h3>
          <p>
-            A block formatting context is any box that satifies at least one of the following:
+            A block formatting context is any box that satisfiess at least one of the following:
          </p>
          <ul>
             <li>The value of <code>float</code> is not <code>none</code></li>
@@ -1422,6 +1345,9 @@ div {
             </li>
             <li>The value of <code>position</code> is neither <code>static</code> nor <code>relative</code></li>
          </ul>
+         <p>
+            It is crucial to understand block formatting contexts in order to fully understand floats.
+         </p>
          <div class="source">
             Source: <a href="http://www.tjkdesign.com/articles/block-formatting-contexts_and_hasLayout.asp">
                Block Formatting Contexts
@@ -1486,8 +1412,8 @@ div {
       <article>
          <h3>Block Formatting Contexts</h3>
          <p>
-            The border box of a block formatting context cannot overlap the margin box of the containing
-            block formatting context.
+            The border box of a block formatting context cannot overlap the margin box of any floated
+            element in the containing block formatting context.
          </p>
          <pre>
 &lt;div&gt;
@@ -1514,11 +1440,142 @@ div {
          </div>
       </article>
 
-      <article>
-         <h3>Centering Elements</h3>
+      <!-- Sizing with Floats -->
+      <article class="smaller">
+         <h3>Sizing with Floats</h3>
          <p>
-
+            Floats that are longer than the containing block's footprint can cause layout issues.
          </p>
+         <div class="box-container exampleSpacing">
+            <div class="box box1" style="float: left; width: 33%;">
+               Direct trade flexitarian ennui mixtape occaecat, cliche sint umami photo booth.
+            </div>
+            Typewriter wes anderson twee.
+         </div>
+         <div style="float: left; margin-top: 30px;">
+            <p>
+               Fix this by creating a new block formatting context. For example, use <code>overflow: hidden</code>.
+            </p>
+            <div class="box-container exampleSpacing" style="overflow: hidden; height: auto;">
+               <div class="box box1" style="float: left; width: 33%;">
+                  +1 wolf mixtape, proident sriracha odio banksy sapiente cosby sweater raw denim eu.
+               </div>
+               Kale chips brooklyn enim, banh mi eu pop-up 3 wolf moon.
+            </div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/float">Float</a>
+         </div>
+      </article>
+
+      <!-- In-Flow Element Margins and Floats  -->
+      <article class="smaller">
+         <h3>In-Flow Element Boxes and Floats</h3>
+         <p>
+            Adding a margin to the in-flow element does not work as you might expect with floated elements.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
+   &lt;div style="margin-left: 20px;"&gt;In-flow&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div class="exampleSpacing box-container" style="overflow: hidden;">
+            <div class="box box1" style="float: left; padding: 4px;">Floated Left</div>
+            <div class="box box3" style="margin-left: 20px;">In-flow</div>
+         </div>
+         <p>
+            In this example, a 20px left margin has been applied but the third box is still up against
+            the float.
+         </p>
+         <p>
+            This example shows what's going on.
+         </p>
+         <pre style="margin-top: 20px">
+&lt;div style="margin-left: 20px; border-width: 15px;"&gt;In-flow&lt;/div&gt;</pre>
+         <div class="exampleSpacing box-container" style="overflow: hidden;">
+            <div class="box box1" style="float: left; padding: 4px;">Floated Left</div>
+            <div class="box box3" style="margin-left: 20px; border-width: 15px">In-flow</div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="http://www.css-101.org/float/01.php">Floats</a>
+         </div>
+      </article>
+
+      <!-- Clearing a Float -->
+      <article class="smaller">
+         <h3>Clearing Floats</h3>
+         <p>
+            The clear property indicates which sides of element's box may not be adjacent to an
+            earlier floating box.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
+   &lt;div style="float: right; height: 60px;"&gt;Floated right&lt;/div&gt;
+   &lt;div style="clear: left"&gt;In-flow&lt;/div&gt;
+&lt;/div&gt;</pre>
+         <div class="box-container">
+            <div class="box box1" style="float: left;">Floated left</div>
+            <div class="box box2" style="float: right; height: 60px;">Floated right</div>
+            <div class="box box3" style="clear: left;">In-flow</div>
+         </div>
+         <p>
+            The last <code>div</code> clears the left side. The left floated <code>div</code> is moved
+            to above the in-flow element.
+         </p>
+         <div class="source">
+            Further Reading: <a href="http://www.w3.org/wiki/CSS/Properties/clear">Clear</a>
+         </div>
+      </article>
+
+      <!-- Clear with Block Formatting Contexts -->
+      <article class="smaller">
+         <h3>Clear and Block Formatting Contexts</h3>
+         <p>
+            <code>clear</code> is applied to all floats in a block formatting context.
+         </p>
+         <pre>
+&lt;div&gt;
+   &lt;div style="float: left"&gt;Floated left&lt;/div&gt;
+   &lt;div id="myBlock"&gt;
+      &lt;div style="float: left;"&gt;Also Floated Left&lt;/div&gt;
+      &lt;p style="clear: left;"&gt;Text in an in-flow paragraph&lt;/p&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+         </pre>
+         <div class="exampleSpacing box-container">
+            <div class="box box1" style="float: left;">Floated left</div>
+            <div class="box box2">
+               <div class="box box3" style="float: left;">Also Floated Left</div>
+               <p style="clear: left;">Text in an in-flow paragraph</p>
+            </div>
+         </div>
+         <p>
+            Now change <code>#myBlock</code> to be a block formatting context.
+         </p>
+         <div class="exampleSpacing box-container">
+            <div class="box box1" style="float: left;">Floated left</div>
+            <div class="box box2" style="overflow: hidden;">
+               <div class="box box3" style="float: left;">Also Floated Left</div>
+               <p style="clear: left;">Text in an in-flow paragraph</p>
+            </div>
+         </div>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/clear">Clear</a>
+         </div>
+      </article>
+
+      <article>
+         <h3>JavaScript Functions for Measuring Layout Values</h3>
+         <p>
+            <img style="height: 525px;" class="centered" src="http://i.msdn.microsoft.com/dynimg/IC504971.gif">
+         </p>
+         <div class="source">
+            Source:
+            <a href="http://msdn.microsoft.com/en-us/library/ms530302(VS.85).aspx">
+               Measuring Element Dimension and Location with CSS Object Model
+            </a>
+         </div>
       </article>
 
       <!-- Segue to Colors, Shadows, and Gradients -->
@@ -1834,6 +1891,162 @@ h5 { color: hsl(140, 34, 128); }</pre>
          </p>
       </article>
 
+      <!-- Font Fancy -->
+      <article>
+         <h3>Font Fancy</h3>
+         <p>
+            CSS allows control over how the user agent renders text above and beyond the standard
+            left/right/middle align, justify, etc.
+         </p>
+         <ul>
+            <li>
+               <code>letter-spacing</code> and <code>word-spacing</code>
+            </li>
+            <li>
+               <code>font-variant</code>
+            </li>
+            <li>
+               <code>text-transform</code>
+            </li>
+            <li>
+               <code>text-rendering</code>
+            </li>
+         </ul>
+      </article>
+
+      <!-- Font Fancy - Letter Spacing -->
+      <article>
+         <h3>Letter Spacing</h3>
+         <p>
+            Use letter spacing to control the amount of space to include between letters
+            <em>beyond the default</em>.
+         </p>
+         <pre>
+&lt;p&gt;Lo-fi 8-bit sartorial viral keytar.&lt;/p&gt;
+&lt;p style="letter-spacing: -2px;&gt;
+   Lo-fi 8-bit sartorial viral keytar.
+&lt;/p&gt;
+&lt;p style="letter-spacing: 1.1em;&gt;
+   Lo-fi 8-bit sartorial viral keytar.
+&lt;/p&gt;</pre>
+         <p style="margin-top: 0">Lo-fi 8-bit sartorial viral keytar.</p>
+         <p style="letter-spacing: -2px; margin-top: 0">Lo-fi 8-bit sartorial viral keytar.</p>
+         <p style="letter-spacing: 1.1em; margin-top: 0">Lo-fi 8-bit sartorial viral keytar.</p>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/CSS/letter-spacing">Letter Spacing</a>
+         </div>
+      </article>
+
+      <!-- Font Fancy - Word Spacing -->
+      <article>
+         <h3>Word Spacing</h3>
+         <p>
+            Similar to letter spacing, <code>word-spacing</code> specifies the amount of space between
+            words.
+         </p>
+         <pre style="margin-bottom: 20px">
+&lt;p style="word-spacing: normal;"&gt;
+   Thundercats, you probably haven't heard of them.
+&lt;/p&gt;
+&lt;p style="word-spacing: -4px;"&gt;
+   Thundercats, you probably haven't heard of them.
+&lt;/p&gt;
+&lt;p style="word-spacing: 1.1em;"&gt;
+   Thundercats, you probably haven't heard of them
+&lt;/p&gt;</pre>
+         <p style="word-spacing: normal; margin-top: 0">Thundercats, you probably haven't heard of them.</p>
+         <p style="word-spacing: -4px; margin-top: 0">Thundercats, you probably haven't heard of them.</p>
+         <p style="word-spacing: 1.1em; margin-top: 0">Thundercats, you probably haven't heard of them.</p>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/CSS/word-spacing">Word Spacing</a>
+         </div>
+      </article>
+
+      <article>
+         <h3>Font Variant</h3>
+         <p>
+            Some fonts have different variants built-in.
+         </p>
+         <p>
+            There are lots and lots of <code>font-variant</code>s defined in the CSS3 spec.
+         </p>
+         <p>
+            The most well-known and commonly used is <code>small-caps</code>.
+         </p>
+         <pre>
+&lt;p style="font-variant: normal;"&gt;
+   Post-ironic pickled stumptown letterpress mumblecore.
+&lt;/p&gt;
+&lt;p style="font-variant: small-caps;"&gt;
+   Post-ironic pickled stumptown letterpress mumblecore.
+&lt;/p&gt;</pre>
+         <p style="font-variant: normal; margin-top: 0">
+            Post-ironic pickled stumptown letterpress mumblecore.
+         </p>
+         <p style="font-variant: small-caps; margin-top: 0">
+            Post-ironic pickled stumptown letterpress mumblecore.
+         </p>
+         <div class="source">
+            Source: <a href="http://dev.w3.org/csswg/css3-fonts/#font-rend-desc">font-variant</a>
+         </div>
+      </article>
+
+      <!-- Font Fancy - Text Transform -->
+      <article>
+         <h3>Text Transform</h3>
+         <p>
+            The <code>text-transform</code> rule can control the capitalization of text.
+         </p>
+         <pre>
+&lt;p style="text-transform: capitalize;"&gt;
+   Viral PBR stumptown photo booth kale chips.
+&lt;/p&gt;
+&lt;p style="text-transform: uppercase;"&gt;
+   Viral PBR stumptown photo booth kale chips.
+&lt;/p&gt;
+&lt;p style="text-transform: lowercase;"&gt;
+   Viral PBR stumptown photo booth kale chips.
+&lt;/p&gt;</pre>
+         <p style="margin-top: 0; text-transform: capitalize;">
+            Viral PBR stumptown photo booth kale chips.
+         </p>
+         <p style="margin-top: 0; text-transform: uppercase;">
+            Viral PBR stumptown photo booth kale chips.
+         </p>
+         <p style="margin-top: 0; text-transform: lowercase;">
+            Viral PBR stumptown photo booth kale chips.
+         </p>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/CSS/text-transform">text-transform</a>
+         </div>
+      </article>
+
+      <!-- Font Fancy - Text Rendering -->
+      <article>
+         <h3>Text Rendering</h3>
+         <p>
+            The <code>text-rendering</code> option provides hints to the CSS rendering engine on how
+            to render text.
+         </p>
+         <p>
+            Text rendering is an in-exact science. Trade-offs are made at run-time between rendering
+            speed and glyph legibility.
+         </p>
+         <pre>
+&lt;p style="text-rendering: optimizeSpeed;"&gt;WAR ff fi fl ffl&lt;/p&gt;
+&lt;p style="text-rendering: optimizeLegibility;"&gt;WAR ff fi fl ffl&lt;/p&gt;
+         </pre>
+         <p style="font: 50px 'Dejavu Serif',Constantia, serif; text-rendering: optimizeSpeed; letter-spacing: 1px;">
+            WAR ff fi fl ffl
+         </p>
+         <p style="font: 50px 'Dejavu Serif',Constantia, serif; text-rendering: optimizeLegibility; letter-spacing: 1px; margin-top: 0;">
+            WAR ff fi fl ffl
+         </p>
+         <div class="source">
+            Source: <a href="https://developer.mozilla.org/en/CSS/text-rendering">text-rendering</a>
+         </div>
+      </article>
+
       <!-- Web Fonts -->
       <article class="smaller">
          <h3>Web Fonts</h3>
@@ -1898,11 +2111,6 @@ h5 { color: hsl(140, 34, 128); }</pre>
             <a href="https://developer.mozilla.org/en/CSS/word-wrap">word-wrap</a>
          </div>
       </article>
-
-      <!--<article class="animateBackground" style="-webkit-transition-property: background-position;
-             -webkit-transition-duration: 250ms;">
-         <h2>Hover over this</h2>
-      </article> -->
 
       <!-- Elided Text -->
       <article class="smaller">
@@ -2389,7 +2597,41 @@ $('#item1').css('width', val1 + 10); // Write
 $('#item2').css('width', val2 + 20); // Write
 $('#item3').css('width', val3 + 30); // Write</pre>
          <div class="source">
-            Further Reading: <a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">Rendering: repaint, reflow/relayout, restyle</a>
+            Further Reading: <a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">Rendering: repaint, reflow/relayout, restyle</a>,
+            <a href="http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-performance-making-your-javascript-slow/">
+               Reflows & Repaints: CSS Performance making your JavaScript slow?
+            </a>
+         </div>
+      </article>
+
+      <article class="smaller">
+         <h3>Hide Elements with Visibility</h3>
+         <p>
+            The <code>visibility: hidden</code> rule works very similarly to <code>display: none</code>.
+         </p>
+         <p>
+            Both hide an element.
+         </p>
+         <p>
+            The difference is that elements set with <code>visibility: hidden</code> do not reliquish
+            the space in the layout.
+         </p>
+         <p>
+            This means no reflow is necessary to remove the element. Just a repaint.
+         </p>
+         <pre>
+&lt;span&gt;
+   Hidden text: &lt;span style="display: none;"&gt;Some hidden text&lt;/span&gt;
+   Invisible text: &lt;span style="visibility: hidden;"&gt;Some invisible text&lt;/span&gt;
+&lt;/span&gt;</pre>
+         <p>
+            <span class="box-container">
+               Hidden text: <span style="display: none;">Some hidden text</span>
+               Invisible text: <span style="visibility: hidden;">Some invisible text</span>
+            </span>
+         </p>
+         <div class="source">
+            Further Reading: <a href="https://developer.mozilla.org/en/CSS/visibility">Visibility</a>
          </div>
       </article>
 
@@ -2532,6 +2774,7 @@ div.myClass div div [type=text] {
 
       <article class="smaller">
          <h3>Selector Style Performance Results</h3>
+         <div id="performanceResults"></div>
          <table id="performanceDataTable">
             <thead>
             <tr>
@@ -2598,338 +2841,10 @@ div.myClass div div [type=text] {
             </tr>
             </tbody>
          </table>
-         <div id="performanceResults"></div>
          <div class="source">
-            Source <a href="http://www.screwlewse.com/labs/css-performance-test.php">CSS Formatting Performance Test Page</a>
+            Source: <a href="http://www.screwlewse.com/labs/css-performance-test.php">CSS Formatting Performance Test Page</a>
          </div>
       </article>
-
-
-
-      <article>
-        <h1>
-          Title Goes Here Up
-          <br>
-          To Two Lines
-        </h1>
-        <p>
-          Sergey Brin
-          <br>
-          May 10, 2011
-        </p>
-      </article>
-      
-      <article>
-        <p>
-          This is a slide with just text. This is a slide with just text.
-          This is a slide with just text. This is a slide with just text.
-          This is a slide with just text. This is a slide with just text.
-        </p>
-        <p>
-          There is more text just underneath.
-        </p>
-      </article>
-
-      <article>
-        <h3>
-          Simple slide with header and text
-        </h3>
-        <p>
-          This is a slide with just text. This is a slide with just text.
-          This is a slide with just text. This is a slide with just text.
-          This is a slide with just text. This is a slide with just text.
-        </p>
-        <p>
-          There is more text just underneath with a <code>code sample: 5px</code>.
-        </p>
-      </article>
-
-      <article class='smaller'>
-        <h3>
-          Simple slide with header and text (small font)
-        </h3>
-        <p>
-          This is a slide with just text. This is a slide with just text.
-          This is a slide with just text. This is a slide with just text.
-          This is a slide with just text. This is a slide with just text.
-        </p>
-        <p>
-          There is more text just underneath with a <code>code sample: 5px</code>.
-        </p>
-      </article>
-
-      <article>
-        <h3>
-          Slide with bullet points and a longer title, just because we
-          can make it longer
-        </h3>
-        <ul>
-          <li>
-            Use this template to create your presentation
-          </li>
-          <li>
-            Use the provided color palette, box and arrow graphics, and
-            chart styles
-          </li>
-          <li>
-            Instructions are provided to assist you in using this
-            presentation template effectively
-          </li>
-          <li>
-            At all times strive to maintain Google's corporate look and feel
-          </li>
-        </ul>
-      </article>
-
-      <article>
-        <h3>
-          Slide with bullet points that builds
-        </h3>
-        <ul class="build">
-          <li>
-            This is an example of a list
-          </li>
-          <li>
-            The list items fade in
-          </li>
-          <li>
-            Last one!
-          </li>
-        </ul>
-
-        <div class="build">
-          <p>Any element with child nodes can build.</p>
-          <p>It doesn't have to be a list.</p>
-        </div>
-      </article>
-
-      <article class='smaller'>
-        <h3>
-          Slide with bullet points (small font)
-        </h3>
-        <ul>
-          <li>
-            Use this template to create your presentation
-          <li>
-            Use the provided color palette, box and arrow graphics, and
-            chart styles
-          <li>
-            Instructions are provided to assist you in using this
-            presentation template effectively
-          <li>
-            At all times strive to maintain Google's corporate look and feel
-        </ul>
-      </article>
-
-      <article>
-        <h3>
-          Slide with a table
-        </h3>
-        
-        <table>
-          <tr>
-            <th>
-              Name
-            <th>
-              Occupation
-          <tr>
-            <td>
-              Luke Mah�
-            <td>
-              V.P. of Keepin� It Real
-          <tr>
-            <td>
-              Marcin Wichary
-            <td>
-              The Michael Bay of Doodles
-        </table>
-      </article>
-      
-      <article class='smaller'>
-        <h3>
-          Slide with a table (smaller text)
-        </h3>
-        
-        <table>
-          <tr>
-            <th>
-              Name
-            <th>
-              Occupation
-          <tr>
-            <td>
-              Luke Mah�
-            <td>
-              V.P. of Keepin� It Real
-          <tr>
-            <td>
-              Marcin Wichary
-            <td>
-              The Michael Bay of Doodles
-        </table>
-      </article>
-      
-      <article>
-        <h3>
-          Styles
-        </h3>
-        <ul>
-          <li>
-            <span class='red'>class="red"</span>
-          <li>
-            <span class='blue'>class="blue"</span>
-          <li>
-            <span class='green'>class="green"</span>
-          <li>
-            <span class='yellow'>class="yellow"</span>
-          <li>
-            <span class='black'>class="black"</span>
-          <li>
-            <span class='white'>class="white"</span>
-          <li>
-            <b>bold</b> and <i>italic</i>
-        </ul>
-      </article>
-      
-      <article>
-        <h2>
-          Segue slide
-        </h2>
-      </article>
-
-      <article>
-        <h3>
-          Slide with an image
-        </h3>
-        <p>
-          <img style='height: 500px' src='images/example-graph.png'>
-        </p>
-        <div class='source'>
-          Source: Sergey Brin
-        </div>
-      </article>
-
-      <article>
-        <h3>
-          Slide with an image (centered)
-        </h3>
-        <p>
-          <img class='centered' style='height: 500px' src='images/example-graph.png'>
-        </p>
-        <div class='source'>
-          Source: Larry Page
-        </div>
-      </article>
-
-      <article class='fill'>
-        <h3>
-          Image filling the slide (with optional header)
-        </h3>
-        <p>
-          <img src='images/example-cat.jpg'>
-        </p>
-        <div class='source white'>
-          Source: Eric Schmidt
-        </div>
-      </article>
-
-      <article>
-        <h3>
-          This slide has some code
-        </h3>
-        <section>
-        <pre>
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }
-  }
-&lt;/script&gt;
-&lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-  u { color: 'umber' }
-&lt;/style&gt;
-</pre>
-        </section>
-      </article>
-      
-      <article class='smaller'>
-        <h3>
-          This slide has some code (small font)
-        </h3>
-        <section>
-        <pre>
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }
-  }
-&lt;/script&gt;
-&lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-  u { color: 'umber' }
-&lt;/style&gt;
-</pre>
-        </section>
-      </article>
-      
-      <article>
-        <q>
-          The best way to predict the future is to invent it.
-        </q>
-        <div class='author'>
-          Alan Kay
-        </div>
-      </article>
-      
-      <article class='smaller'>
-        <q>
-          A distributed system is one in which the failure of a computer 
-          you didn�t even know existed can render your own computer unusable.
-        </q>
-        <div class='author'>
-          Leslie Lamport
-        </div>
-      </article>
-      
-      <article class='nobackground'>
-        <h3>
-          A slide with an embed + title
-        </h3>
-        
-        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
-      </article>
-
-      <article class='nobackground'>
-        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
-      </article>
-
-      <article class='fill'>
-        <h3>
-          Full-slide embed with (optional) slide title on top
-        </h3>
-        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
-      </article>
-      
-      <article>
-        <h3>
-          Thank you!
-        </h3>
-        
-        <ul>
-          <li>
-            <a href='http://www.google.com'>google.com</a>
-        </ul>
-      </article>
-
     </section>
 
     <script src="js/lib/jquery-1.7.2.min.js"></script>
