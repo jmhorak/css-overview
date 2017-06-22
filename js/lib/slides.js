@@ -10,7 +10,7 @@
   URL: http://code.google.com/p/html5slides/
 */
 
-var PERMANENT_URL_PREFIX = 'http://jmhorak.github.io/css-overview/js/';
+var PERMANENT_URL_PREFIX = 'http://jmhorak.github.io/css-overview/js/lib/';
 var PERMANENT_CSS_PREFIX = 'http://jmhorak.github.io/css-overview/css/';
 
 var SLIDE_CLASSES = ['far-past', 'past', 'current', 'next', 'far-next'];
